@@ -24,7 +24,12 @@ if (isset($_POST['submit'])) {
         if($login->rowCount() > 0) {
             // echo $login->rowCount();
 
-            
+            // validate password
+            if (password_verify($password, $fetch['mypassword'])) {
+                echo "Logged in successfully";
+            } else {
+                echo "email or password not correct";
+            }
         } else {
             echo "<script>alert('email or password is empty');<script>";
         } 
