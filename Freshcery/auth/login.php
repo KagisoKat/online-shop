@@ -15,6 +15,14 @@ if (isset($_POST['submit'])) {
         $email = $_POST['email'];
         $password = $_POST['password'];
         
+        // query
+
+        $login = $conn->query("SELECT * FROM users WHERE email='$email'");
+        $login->execute();
+
+        $fetch = $login->fetch(PDO::FETCH_ASSOC);
+
+        // 
     }
 }
 
