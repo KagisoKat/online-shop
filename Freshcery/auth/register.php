@@ -1,4 +1,6 @@
 <?php require "../includes/header.php"; ?>
+<?php require "../config/config.php"; ?>
+
 <?php
 
 if(isset($_POST['submit'])) {
@@ -9,14 +11,30 @@ if(isset($_POST['submit'])) {
     echo "<script>alert('one or more inputs are empty');<script>";
    } else{
 
-     if($_POST['username'])
+     if($_POST['password'] == $_POST['confirm_password']){
+        $fullname = $_POST['fullname'];
+        $email = $_POST['email'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $img = "user.png";
 
-     $fullname = $_POST['fullname'];
-     $email = $_POST['email'];
-     $username = $_POST['username'];
-     $password = $_POST['password'];
-     $img = "user.png";
-    //  $confirmpassword = $_POST[''];
+        $insert = $conn->prepare("INSERT INTO users(fullname, email, username, mypassword, image)
+         VALUES(:fullname, :email, :username, :mypassword, :image)");
+
+         $insert->execute([
+            ":fullname" => $fullname,
+            ":email" => $email,
+            ":username" => $username,
+            ":mypassword" => $mypassword,
+            ":image" => $image
+         ]);
+
+       //  $confirmpassword = $_POST[''];
+     } else {
+        echo "<script>alert('password does not match');<script>";
+     }
+
+    
    }
 }
 
