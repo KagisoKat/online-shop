@@ -25,9 +25,11 @@ if(isset($_POST['submit'])) {
             ":fullname" => $fullname,
             ":email" => $email,
             ":username" => $username,
-            ":mypassword" => $mypassword,
+            ":mypassword" => password_hash($mypassword, PASSWORD_DEFAULT),
             ":image" => $image
          ]);
+
+         header("location: ".APPURL."/login.php");
 
        //  $confirmpassword = $_POST[''];
      } else {
@@ -52,10 +54,10 @@ if(isset($_POST['submit'])) {
 
                     <div class="card card-login mb-5">
                         <div class="card-body">
-                            <form class="form-horizontal" action="index.html">
+                            <form class="form-horizontal" method="POST" action="register.php">
                                 <div class="form-group row mt-3">
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" required="" placeholder="Full Name">
+                                        <input class="form-control" name="fullname" type="text" required="" placeholder="Full Name">
                                     </div>
                                 </div>
                                 <div class="form-group row mt-3">
