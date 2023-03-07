@@ -2,16 +2,22 @@
 <?php require "../config/config.php"; ?>
 <?php
 
+if (isset($_SESSION['username'])) {
+    echo "<script> window.location.href='" . APPURL . "'; </script>";
+}
+
+
+
 if (isset($_POST['submit'])) {
 
-    if (empty($_POST['email']) or empty($_POST['password'] )) {
+    if (empty($_POST['email']) or empty($_POST['password'])) {
 
         echo "<script>alert('one or more inputs are empty');<script>";
     } else {
 
         $email = $_POST['email'];
         $password = $_POST['password'];
-        
+
         // query
 
         $login = $conn->query("SELECT * FROM users WHERE email='$email'");
@@ -21,7 +27,7 @@ if (isset($_POST['submit'])) {
 
         // validate email
 
-        if($login->rowCount() > 0) {
+        if ($login->rowCount() > 0) {
             // echo $login->rowCount();
 
             // validate password
@@ -31,13 +37,12 @@ if (isset($_POST['submit'])) {
                 $_SESSION['email'] = $fetch['email'];
                 $_SESSION['user_id'] = $fetch['id'];
                 $_SESSION['image'] = $fetch['image'];
-                
-                echo "<script> window.location.href='".APPURL."'; </script>";
 
+                echo "<script> window.location.href='" . APPURL . "'; </script>";
             }
         } else {
             echo "<script>alert('email or password is empty');<script>";
-        } 
+        }
     }
 }
 
