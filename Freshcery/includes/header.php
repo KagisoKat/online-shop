@@ -51,6 +51,9 @@ define("APPURL", "http://localhost/online-shop/Freshcery");
                         <li class="nav-item">
                             <a href="shop.html" class="nav-link">Shop</a>
                         </li>
+                        <li class="nav-item">
+                        <a href="faq.html" class="nav-link">FAQ</a>
+                        </li>
                         <?php if (!$_SESSION['username']) : ?>
                             <li class="nav-item">
                                 <a href="register.html" class="nav-link">Register</a>
@@ -61,11 +64,12 @@ define("APPURL", "http://localhost/online-shop/Freshcery");
                         <?php else : ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <div class="avatar-header"><img src="<?php echo APPURL; ?>/assets/img/logo/avatar.jpg"></div> <?php echo $_SESSION['username']
+                                    <div class="avatar-header"><img src="<?php echo APPURL; ?>/assets/img/logo/avatar.jpg"></div> <?php echo $_SESSION['username']; ?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="transaction.html">Transactions History</a>
                                     <a class="dropdown-item" href="setting.html">Settings</a>
+                                    <a class="dropdown-item" href="<?php echo APPURL; ?>/auth/logout.php">Log out</a>
                                 </div>
                             </li>
                             <li class="nav-item">
