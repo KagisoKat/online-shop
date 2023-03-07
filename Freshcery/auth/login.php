@@ -26,9 +26,14 @@ if (isset($_POST['submit'])) {
 
             // validate password
             if (password_verify($password, $fetch['mypassword'])) {
-                echo "Logged in successfully";
-            } else {
-                echo "email or password not correct";
+
+                $_SESSION['username'] = $fetch['username'];
+                $_SESSION['email'] = $fetch['email'];
+                $_SESSION['user_id'] = $fetch['id'];
+                $_SESSION['image'] = $fetch['image'];
+                
+                echo "<script> window.location.href='".APPURL."'; </script>";
+
             }
         } else {
             echo "<script>alert('email or password is empty');<script>";

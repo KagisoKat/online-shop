@@ -1,12 +1,16 @@
 <?php
 
-    define("APPURL", "http://localhost/online-shop/Freshcery");
+session_start();
+define("APPURL", "http://localhost/online-shop/Freshcery");
+
+
 
 ?>
 
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Freshcery | Groceries Organic Store</title>
     <meta charset="utf-8">
@@ -25,6 +29,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo APPURL; ?>/assets/css/theme.css">
 
 </head>
+
 <body>
     <div class="page-header">
         <!--=============== Navbar ===============-->
@@ -46,27 +51,30 @@
                         <li class="nav-item">
                             <a href="shop.html" class="nav-link">Shop</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="register.html" class="nav-link">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="login.html" class="nav-link">Login</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="avatar-header"><img src="<?php echo APPURL; ?>/assets/img/logo/avatar.jpg"></div> John Doe
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="transaction.html">Transactions History</a>
-                                <a class="dropdown-item" href="setting.html">Settings</a>
-                            </div>
-                          </li>
-                        <li class="nav-item">
-                            <a href="cart.html" class="nav-link" data-toggle="" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary">5</span>
-                            </a>
-                          
-                        </li>
+                        <?php if (!$_SESSION['username']) : ?>
+                            <li class="nav-item">
+                                <a href="register.html" class="nav-link">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="login.html" class="nav-link">Login</a>
+                            </li>
+                        <?php else : ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="avatar-header"><img src="<?php echo APPURL; ?>/assets/img/logo/avatar.jpg"></div> <?php echo $_SESSION['username']
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="transaction.html">Transactions History</a>
+                                    <a class="dropdown-item" href="setting.html">Settings</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a href="cart.html" class="nav-link" data-toggle="" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary">5</span>
+                                </a>
+
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
 
