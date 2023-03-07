@@ -1,10 +1,10 @@
 <?php
 
-// if(isset($_SERVER['HTTP_REFERER'])){
-//     //redirect them to you desired location
-//     header('location: index.php');
-//     exit;
-// }
+if(!isset($_SERVER['HTTP_REFERER'])){
+    //redirect them to you desired location
+    header('location: http://localhost/online-shop/Freshcery/index.php');
+    exit;
+}
 
 
 
