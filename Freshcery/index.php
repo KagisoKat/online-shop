@@ -1,10 +1,11 @@
 <?php require "./includes/header.php"; ?>
+<?php require "./config/config.php"; ?>
 <?php
 
 $categories = $conn->query("SELECT * FROM categories");
 $categories->execute();
 
-$allCategories = $categories->fetchALL(PDO::FETCH_OBJ);
+$allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 
@@ -154,23 +155,23 @@ $allCategories = $categories->fetchALL(PDO::FETCH_OBJ);
             <?php foreach ($allCategories as $category) : ?>
                 <div class="item">
                     <div class="card rounded-0 border-0 text-center">
-                        <img src="assets/img/vegetables.jpg">
+                        <img src="assets/img/<?php echo $category->image; ?>">
                         <div class="card-img-overlay d-flex align-items-center justify-content-center">
                             <!-- <h4 class="card-title">Vegetables</h4> -->
-                            <a href="shop.html" class="btn btn-primary btn-lg">Vegetables</a>
+                            <a href="shop.php" class="btn btn-primary btn-lg"><?php echo $category->name; ?></a>
                         </div>
                     </div>
                 </div>
-
-                <div class="card rounded-0 border-0 text-center">
-                    <img src="assets/img/<?php echo $category->image; ?>">
+            <?php endforeach; ?>
+            <!--    <div class="card rounded-0 border-0 text-center">
+                    <img src="assets/img/vegetables.jpg">
                     <div class="card-img-overlay d-flex align-items-center justify-content-center">
                         <!-- <h4 class="card-title">Package</h4> -->
-                        <a href="shop.php" class="btn btn-primary btn-lg"><?php echo $category->name; ?></a>
+            <!--            <a href="shop.php" class="btn btn-primary btn-lg">Vegetables</a>
                     </div>
-                </div>
+                </div>-->
         </div>
-    <?php endforeach; ?>
+
 </div>
 </section>
 </div>
