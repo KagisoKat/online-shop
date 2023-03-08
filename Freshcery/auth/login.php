@@ -39,9 +39,11 @@ if (isset($_POST['submit'])) {
                 $_SESSION['image'] = $fetch['image'];
 
                 echo "<script> window.location.href='" . APPURL . "'; </script>";
+            } else {
+                echo "<script>alert('email or password is empty');</script>";
             }
         } else {
-            echo "<script>alert('email or password is empty');<script>";
+            echo "<script>alert('email or password is empty');</script>";
         }
     }
 }
