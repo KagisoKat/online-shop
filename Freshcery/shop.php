@@ -115,13 +115,13 @@ $allFruits = $fruits->fetchAll(PDO::FETCH_OBJ);
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title">
-                                        <a href="detail-product.html"><?php echo $allmostProduct->title; ?></a>
+                                        <a href="detail-product.php?id=<?php echo $allmostProduct->category_id?>"><?php echo $allmostProduct->title; ?></a>
                                     </h4>
                                     <div class="card-price">
                                         <!-- <span class="discount">Rp. 300.000</span> -->
                                         <span class="reguler"><?php echo $allmostProduct->price; ?></span>
                                     </div>
-                                    <a href="detail-product.php" class="btn btn-block btn-primary">
+                                    <a href="<?php echo APPURL; ?>/detail-product.php?id=<?php echo $allmostProduct->category_id; ?>" class="btn btn-block btn-primary">
                                         Add to Cart
                                     </a>
                                 </div>
