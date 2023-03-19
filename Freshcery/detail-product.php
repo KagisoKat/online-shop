@@ -48,6 +48,8 @@ if (isset($_GET['id'])) {
 
     // var_dump($allRelatedProducts);
 
+    // validating cart products
+
 } else {
 }
 
@@ -180,43 +182,6 @@ if (isset($_GET['id'])) {
                                 </div>
                             </div>
                         <?php endforeach; ?>
-
-                        <!-- <div class="card card-product">
-                                    <div class="card-ribbon">
-                                        <div class="card-ribbon-container right">
-                                            <span class="ribbon ribbon-primary">SPECIAL</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-badge">
-                                        <div class="card-badge-container left">
-                                            <span class="badge badge-default">
-                                                Until 2018
-                                            </span>
-                                            <span class="badge badge-primary">
-                                                20% OFF
-                                            </span>
-                                        </div>
-                                        <img src="assets/img/fruits.jpg" alt="Card image 2" class="card-img-top">
-                                    </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            <a href="detail-product.php">Product Title</a>
-                                        </h4>
-                                        <div class="card-price">
-                                            <span class="discount">Rp. 300.000</span>
-                                            <span class="reguler">Rp. 200.000</span>
-                                        </div>
-                                        <a href="detail-product.php" class="btn btn-block btn-primary">
-                                            Add to Cart
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
     </section>
 </div>
 
@@ -244,6 +209,7 @@ if (isset($_GET['id'])) {
 
                 success: function() {
                     alert("product added to cart");
+                    $(".btn-insert").html('<i class="fa fa-shopping-basket"></i> Added to cart').prop("disabled", true);
                 }
             })
         })
