@@ -129,9 +129,15 @@ if (isset($_GET['id'])) {
 
                         <div class="row">
                             <div class="col-sm-5">
+                                <?php
+                                    if (!isset($_SESSION['user_id'])) { ?>
+                                <input class="form-control" type="hidden" name="user_id" value="Not logged in">
+                                <?php } else { ?>
                                 <input class="form-control" type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+                                <?php } ?>
                             </div>
                         </div>
+                        <?php if(isset($_SESSION['username'])) :?>
                         <?php if ($validate->rowCount() > 0) : ?>
                             <button class=" btn-insert mt-3  btn btn-primary btn-lg " name="submit" type="submit" disabled>
                                 <i class="fa fa-shopping-basket" ></i> Added to Cart
@@ -141,6 +147,11 @@ if (isset($_GET['id'])) {
                                 <i class="fa fa-shopping-basket"></i> Add to Cart
                             </button>
                         <?php endif; ?>
+                        <?php else: ?>
+                        <div class=" mt-5 alert alert-success bg-success text-white text-center">
+                                        log in to buy this product or add it to cart
+                                    </div>
+                          <?php endif; ?>          
                     </form>
 
                 </div>
