@@ -62,7 +62,7 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                                                 <input class=" pro_qty form-control" type="number" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $product->pro_qty; ?>" name="vertical-spin">
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-primary">UPDATE</a>
+                                                <a href="#" class=" btn-update btn btn-primary">UPDATE</a>
                                             </td>
                                             <td class="subtotal_price">
                                             <?php echo $product->pro_price * $product->pro_qty; ?>
@@ -125,16 +125,18 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 
                 $.ajax({
                     type: "POST",
-                    url: "update-item.php",
+                    url: "update-product.php",
                     data: {
                         update: "update",
                         id: id,
-                        pro_amount: pro_amount
+                        pro_qty: pro_qty,
+                        subTotal: subtotal
+
                     },
 
                     success: function() {
-                        // alert("done");
-                        //reload();
+                        alert("done");
+                        reload();
                     }
                 })
             });

@@ -9,10 +9,11 @@ if (isset($_POST['submit'])) {
     $pro_image = $_POST['pro_image'];
     $pro_price = $_POST['pro_price'];
     $pro_qty = $_POST['pro_qty'];
+    $pro_subtotal = $_POST['pro_subtotal'];
     $user_id = $_POST['user_id'];
 
-    $insert = $conn->prepare("INSERT INTO cart (pro_id, pro_title, pro_image, pro_price, pro_qty, user_id)
-     VALUES(:pro_id, :pro_title, :pro_image, :pro_price, :pro_qty, :user_id)");
+    $insert = $conn->prepare("INSERT INTO cart (pro_id, pro_title, pro_image, pro_price, pro_qty,pro_subtotal, user_id)
+     VALUES(:pro_id, :pro_title, :pro_image, :pro_price, :pro_qty, :pro_subtotal, :user_id)");
 
     $insert->execute(
         [
@@ -21,6 +22,7 @@ if (isset($_POST['submit'])) {
             ':pro_image' => $pro_image,
             ':pro_price' => $pro_price,
             ':pro_qty' => $pro_qty,
+            ':pro_subtotal' => $pro_subtotal,
             ':user_id' => $user_id,
         ]
     );
@@ -130,28 +132,32 @@ if (isset($_GET['id'])) {
                         <div class="row">
                             <div class="col-sm-5">
                                 <?php
-                                    if (!isset($_SESSION['user_id'])) { ?>
-                                <input class="form-control" type="hidden" name="user_id" value="Not logged in">
+                                if (!isset($_SESSION['user_id'])) { ?>
+                                    <input class="form-control" type="hidden" name="user_id" value="Not logged in">
                                 <?php } else { ?>
-                                <input class="form-control" type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+                                    <input class="form-control" type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
                                 <?php } ?>
                             </div>
                         </div>
-                        <?php if(isset($_SESSION['username'])) :?>
-                        <?php if ($validate->rowCount() > 0) : ?>
-                            <button class=" btn-insert mt-3  btn btn-primary btn-lg " name="submit" type="submit" disabled>
-                                <i class="fa fa-shopping-basket" ></i> Added to Cart
-                            </button>
-                        <?php else : ?>
-                            <button class=" btn-insert mt-3  btn btn-primary btn-lg " name="submit" type="submit">
-                                <i class="fa fa-shopping-basket"></i> Add to Cart
-                            </button>
-                        <?php endif; ?>
-                        <?php else: ?>
-                        <div class=" mt-5 alert alert-success bg-success text-white text-center">
-                                        log in to buy this product or add it to cart
-                                    </div>
-                          <?php endif; ?>          
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <input class=" subtotal_price form-control" type="hidden" name="pro_subtotal" value="<?php echo $product->price * $product->quantity; ?>">
+                            </div>
+                            <?php if (isset($_SESSION['username'])) : ?>
+                                <?php if ($validate->rowCount() > 0) : ?>
+                                    <button class=" btn-insert mt-3  btn btn-primary btn-lg " name="submit" type="submit" disabled>
+                                        <i class="fa fa-shopping-basket"></i> Added to Cart
+                                    </button>
+                                <?php else : ?>
+                                    <button class=" btn-insert mt-3  btn btn-primary btn-lg " name="submit" type="submit">
+                                        <i class="fa fa-shopping-basket"></i> Add to Cart
+                                    </button>
+                                <?php endif; ?>
+                            <?php else : ?>
+                                <div class=" mt-5 alert alert-success bg-success text-white text-center">
+                                    log in to buy this product or add it to cart
+                                </div>
+                            <?php endif; ?>
                     </form>
 
                 </div>
@@ -232,22 +238,22 @@ if (isset($_GET['id'])) {
             });
         });
 
-        $(".pro_qty").mouseup(function () {
-                  
-                 
+        $(".pro_qty").mouseup(function() {
 
-                  var $el = $(this).closest('form');
-  
-  
-                    var pro_qty = $el.find(".pro_qty").val();
-                    var pro_price = $el.find(".pro_price").val();
-                      
-                    var subtotal = pro_qty * pro_price;
-                    alert(subtotal);
-                    $el.find(".subtotal_price").val("");        
-  
-                    $el.find(".subtotal_price").val(subtotal);
-              });
-  
+
+
+            var $el = $(this).closest('form');
+
+
+            var pro_qty = $el.find(".pro_qty").val();
+            var pro_price = $el.find(".pro_price").val();
+
+            var subtotal = pro_qty * pro_price;
+            // alert(subtotal);
+            $el.find(".subtotal_price").val("");
+
+            $el.find(".subtotal_price").val(subtotal);
+        });
+
     })
 </script>
