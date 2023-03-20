@@ -62,10 +62,10 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                                                 <input class=" pro_qty form-control" type="number" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $product->pro_qty; ?>" name="vertical-spin">
                                             </td>
                                             <td>
-                                                <a href="#" class=" btn-update btn btn-primary">UPDATE</a>
+                                                <button value="<?php echo $product->id; ?>" class=" btn-update btn btn-primary">UPDATE</button>
                                             </td>
                                             <td class="subtotal_price">
-                                            <?php echo $product->pro_price * $product->pro_qty; ?>
+                                                <?php echo $product->pro_price * $product->pro_qty; ?>
                                             </td>
                                             <td>
                                                 <a href="javasript:void" class="text-danger"><i class="fa fa-times"></i></a>
@@ -116,7 +116,7 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
             var subTotal = pro_qty * pro_price;
             $el.find(".subtotal_price").html("");
 
-            $el.find(".subtotal_price").append(subTotal + '$');
+            $el.find(".subtotal_price").append(subTotal);
 
             $(".btn-update").on('click', function(e) {
 
@@ -130,13 +130,13 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                         update: "update",
                         id: id,
                         pro_qty: pro_qty,
-                        subTotal: subtotal
+                        subTotal: subTotal
 
                     },
 
                     success: function() {
                         alert("done");
-                        reload();
+                        // reload();
                     }
                 })
             });
@@ -144,5 +144,30 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 
             fetch();
         });
+
+        $(".btn-delete").on('click', function(e) {
+
+            var id = $(this).val();
+
+
+            $.ajax({
+
+                type: "POST",
+                url: "delete-product.php",
+                data: {
+                    delete: "delete",
+                    id: id,
+                },
+
+                success: function() {
+                    alert("product deleted successfully");
+                    reload();
+                }
+            })
+        });
+
+      function reload() {
+        $("body").load("cart.php");
+      }
     })
 </script>
