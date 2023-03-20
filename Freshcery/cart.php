@@ -55,17 +55,17 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                                                 <?php echo $product->pro_title; ?><br>
                                                 <small>1000g</small>
                                             </td>
-                                            <td>
+                                            <td class="pro_price">
                                                 <?php echo $product->pro_price; ?>
                                             </td>
                                             <td>
-                                                <input class="form-control" type="number" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $product->qty; ?>" name="vertical-spin">
+                                                <input class=" pro_qty form-control" type="number" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $product->pro_qty; ?>" name="vertical-spin">
                                             </td>
                                             <td>
                                                 <a href="#" class="btn btn-primary">UPDATE</a>
                                             </td>
-                                            <td>
-                                                R 30.000
+                                            <td class="subtotal_price">
+                                            <?php echo $product->pro_price * $product->pro_qty; ?>
                                             </td>
                                             <td>
                                                 <a href="javasript:void" class="text-danger"><i class="fa fa-times"></i></a>
@@ -104,43 +104,43 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
             value = value.replace(/^(0*)/, "");
             $(this).val(1);
         });
-        $(".pro_amount").mouseup(function () {
-                  
-                  var $el = $(this).closest('tr');
+        $(".pro_qty").mouseup(function() {
 
-        
+            var $el = $(this).closest('tr');
 
-                  var pro_amount = $el.find(".pro_amount").val();
-                  var pro_price = $el.find(".pro_price").html();
 
-                  var total = pro_amount * pro_price;
-                  $el.find(".total_price").html("");        
 
-                  $el.find(".total_price").append(total+'$');
+            var pro_qty = $el.find(".pro_qty").val();
+            var pro_price = $el.find(".pro_price").html();
 
-                  $(".btn-update").on('click', function(e) {
+            var subTotal = pro_qty * pro_price;
+            $el.find(".subtotal_price").html("");
 
-                      var id = $(this).val();
-                    
+            $el.find(".subtotal_price").append(subTotal + '$');
 
-                      $.ajax({
-                        type: "POST",
-                        url: "update-item.php",
-                        data: {
-                          update: "update",
-                          id: id,
-                          pro_amount: pro_amount
-                        },
+            $(".btn-update").on('click', function(e) {
 
-                        success: function() {
-                         // alert("done");
-                          //reload();
-                        }
-                      })
-                    });
-                 
-                
-           fetch();     
-      });
+                var id = $(this).val();
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "update-item.php",
+                    data: {
+                        update: "update",
+                        id: id,
+                        pro_amount: pro_amount
+                    },
+
+                    success: function() {
+                        // alert("done");
+                        //reload();
+                    }
+                })
+            });
+
+
+            fetch();
+        });
     })
 </script>

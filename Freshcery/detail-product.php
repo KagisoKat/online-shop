@@ -117,12 +117,12 @@ if (isset($_GET['id'])) {
                         </div>
                         <div class="row">
                             <div class="col-sm-5">
-                                <input class="form-control" type="hidden" name="pro_price" value="<?php echo $product->price; ?>">
+                                <input class=" pro_price form-control" type="hidden" name="pro_price" value="<?php echo $product->price; ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-5">
-                                <input class="form-control" type="number" name="pro_qty" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $product->quantity; ?>">
+                                <input class="pro_qty form-control" type="number" name="pro_qty" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $product->quantity; ?>">
                             </div>
                             <div class="col-sm-6"><span class="pt-1 d-inline-block"> Pack 100g</span></div>
                         </div>
@@ -229,7 +229,25 @@ if (isset($_GET['id'])) {
                     alert("product added to cart");
                     $(".btn-insert").html('<i class="fa fa-shopping-basket"></i> Added to cart').prop("disabled", true);
                 }
-            })
-        })
+            });
+        });
+
+        $(".pro_qty").mouseup(function () {
+                  
+                 
+
+                  var $el = $(this).closest('form');
+  
+  
+                    var pro_qty = $el.find(".pro_qty").val();
+                    var pro_price = $el.find(".pro_price").val();
+                      
+                    var subtotal = pro_qty * pro_price;
+                    alert(subtotal);
+                    $el.find(".subtotal_price").val("");        
+  
+                    $el.find(".subtotal_price").val(subtotal);
+              });
+  
     })
 </script>
