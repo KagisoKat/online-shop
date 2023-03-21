@@ -3,7 +3,7 @@
 session_start();
 define("APPURL", "http://localhost/online-shop/Freshcery");
 
-
+require "../config/config.php";
 
 ?>
 

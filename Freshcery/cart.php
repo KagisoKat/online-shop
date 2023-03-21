@@ -87,7 +87,7 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                 <div class="col text-right">
 
                     <div class="clearfix"></div>
-                    <h6 class="mt-3">Total: R 180.000</h6>
+                    <h6 class=" full_price mt-3"></h6>
                     <a href="checkout.php" class="btn btn-lg btn-primary">Checkout <i class="fa fa-long-arrow-right"></i></a>
                 </div>
             </div>
@@ -166,14 +166,16 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
             })
         });
 
+        fetch();
+
         function fetch() {
 
             setInterval(function() {
                 var sum = 0.0;
-                $('.total_price').each(function() {
+                $('.subtotal_price').each(function() {
                     sum += parseFloat($(this).text());
                 });
-                $(".full_price").html(sum + "$");
+                $(".full_price").html('Total price:' +sum);
 
 
 
