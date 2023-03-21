@@ -234,10 +234,15 @@ if (isset($_GET['id'])) {
                 success: function() {
                     alert("product added to cart");
                     $(".btn-insert").html('<i class="fa fa-shopping-basket"></i> Added to cart').prop("disabled", true);
+                    withRef();
                 }
+
             });
         });
 
+        function withRef() {
+            $("body").load("detail-product.php?id=<?php echo $id; ?>");
+        }
         $(".pro_qty").mouseup(function() {
 
 

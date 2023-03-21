@@ -1,4 +1,4 @@
-<?php require "./includes/header.php"; ?>cart
+<?php require "./includes/header.php"; ?>
 <?php require "./config/config.php"; ?>
 <?php
 
@@ -88,6 +88,8 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 
                     <div class="clearfix"></div>
                     <h6 class=" full_price mt-3"></h6>
+                        <input class="inp_price form-control" type="text" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $product->pro_qty; ?>" name="vertical-spin">
+                    
                     <a href="checkout.php" class="btn btn-lg btn-primary">Checkout <i class="fa fa-long-arrow-right"></i></a>
                 </div>
             </div>
@@ -175,7 +177,7 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                 $('.subtotal_price').each(function() {
                     sum += parseFloat($(this).text());
                 });
-                $(".full_price").html('Total price:' +sum);
+                $(".full_price").html('Total price:' + sum);
 
 
 

@@ -10,16 +10,16 @@
 
 try{
 //host
-define("HOST","localhost");
+if(!defined('HOST'))define("HOST","localhost");
 
 //dbname
-define("DBNAME", "online-shop");
+if(!defined('DBNAME')) define("DBNAME", "online-shop");
 
 //user
-define("USER","root");
+if(!defined('USER')) define("USER","root");
 
 //pass
-define("PASS","");
+if(!defined('PASS')) define("PASS","");
 
 
 $conn = new PDO("mysql:host=".HOST.";dbname=".DBNAME.";", USER, PASS);
