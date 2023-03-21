@@ -68,7 +68,7 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                                                 <?php echo $product->pro_price * $product->pro_qty; ?>
                                             </td>
                                             <td>
-                                                <a href="javasript:void" class="text-danger"><i class="fa fa-times"></i></a>
+                                                <button value="<?php echo $product->id; ?>" class=" btn-delete btn btn-primary ">delete</i></button>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -136,7 +136,7 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 
                     success: function() {
                         alert("done");
-                        // reload();
+                        reload();
                     }
                 })
             });
@@ -166,8 +166,22 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
             })
         });
 
-      function reload() {
-        $("body").load("cart.php");
-      }
+        function fetch() {
+
+            setInterval(function() {
+                var sum = 0.0;
+                $('.total_price').each(function() {
+                    sum += parseFloat($(this).text());
+                });
+                $(".full_price").html(sum + "$");
+
+
+
+            }, 4000);
+        }
+
+        function reload() {
+            $("body").load("cart.php");
+        }
     })
 </script>
