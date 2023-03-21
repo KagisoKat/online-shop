@@ -8,7 +8,13 @@ $products->execute();
 
 $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 
+if(isset($_POST['submit'])) {
+    $inp_price = $_POST['inp_price'];
 
+    $_SESSION['price'] = $inp_price;
+    
+    echo "<script> window.location.href='" . APPURL."/checkout.php'; </script>";
+}
 
 
 ?>
@@ -88,9 +94,12 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 
                     <div class="clearfix"></div>
                     <h6 class=" full_price mt-3"></h6>
-                        <input class="inp_price form-control" type="text" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $product->pro_qty; ?>" name="vertical-spin">
-                    
-                    <a href="checkout.php" class="btn btn-lg btn-primary">Checkout <i class="fa fa-long-arrow-right"></i></a>
+                    <form method="POST" action="cart.php">
+                        <input class="inp_price form-control" type="hidden" value="" name="inp_price">
+                     <?php if(count($allProducts) > 0) : ?>
+                        <button type="submit" name="submit" class="btn btn-lg btn-primary">Checkout <i class="fa fa-long-arrow-right"></i></button>
+                   <?php endif; ?>
+                    </form>
                 </div>
             </div>
         </div>
@@ -178,6 +187,7 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                     sum += parseFloat($(this).text());
                 });
                 $(".full_price").html('Total price:' + sum);
+                $(".inp_price").val(sum);
 
 
 
