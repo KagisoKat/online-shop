@@ -32,38 +32,38 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                         <fieldset>
                             <div class="form-group row">
                                 <div class="col">
-                                    <input class="form-control" placeholder="Name" type="text">
+                                    <input class="form-control" placeholder="Name" type="text" name="name">
                                 </div>
                                 <div class="col">
-                                    <input class="form-control" placeholder="Last Name" type="text">
+                                    <input class="form-control" placeholder="Last Name" type="text" name="lname">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Company Name" type="text">
+                                <input class="form-control" placeholder="Company Name" type="text" name="company_name">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" placeholder="Address"></textarea>
+                                <textarea class="form-control" name="address" placeholder="Address"></textarea>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Town / City" type="text">
+                                <input class="form-control" name="city" placeholder="Town / City" type="text">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="State / Country" type="text">
+                                <input class="form-control" name="country" placeholder="State / Country" type="text">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Postcode / Zip" type="text">
+                                <input class="form-control" name="zip_code" placeholder="Postcode / Zip" type="text">
                             </div>
                             <div class="form-group row">
                                 <div class="col">
-                                    <input class="form-control" placeholder="Email Address" type="email">
+                                    <input class="form-control" name="email" placeholder="Email Address" type="email">
                                 </div>
                                 <div class="col">
-                                    <input class="form-control" placeholder="Phone Number" type="tel">
+                                    <input class="form-control" name="phone_number" placeholder="Phone Number" type="tel">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <textarea class="form-control" placeholder="Order Notes"></textarea>
+                                <textarea class="form-control" name="order_notes" placeholder="Order Notes"></textarea>
                             </div>
                         </fieldset>
                     </form>
