@@ -5,7 +5,7 @@ $products = $conn->query("SELECT * FROM cart WHERE user_id='$_SESSION[user_id]'"
 $products->execute();
 
 $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
-if(isset($_SESSION['price'])) {
+if (isset($_SESSION['price'])) {
     $_SESSION['total_price'] = $_SESSION['price'] + 50;
 }
 
@@ -14,12 +14,11 @@ if (isset($_POST['submit'])) {
     if (
         empty($_POST['name']) or empty($_POST['lname']) or empty($_POST['company_name'])
         or empty($_POST['address']) or empty($_POST['city']) or empty($_POST['country'])
-        or empty($_POST['zip_code']) or empty($_POST['email']) or empty($_POST['phone_number']) 
+        or empty($_POST['zip_code']) or empty($_POST['email']) or empty($_POST['phone_number'])
         or empty($_POST['order_notes'])
     ) {
 
         echo "<script>alert('one or more inputs are empty');<script>";
-
     } else {
         $name = $_POST['name'];
         $lname = $_POST['lname'];
@@ -38,27 +37,26 @@ if (isset($_POST['submit'])) {
     phone_number, order_notes, price, user_id)
 VALUES(:name, :lname, :company_name, :address, :city, :country, :zip_code, :email, :phone_number, :order_notes, :price, :user_id)");
 
-   $insert->execute([
-       ":name" => $name,
-       ":lname" => $lname,
-       ":company_name" => $company_name,
-       ":address" => $address,
-       ":city" => $city,
-       ":country" => $country,
-       ":zip_code" => $zip_code,
-       ":email" => $email,
-       ":phone_number" => $phone_number,
-       ":order_notes" => $order_notes,
-       ":price" => $price,
-       ":user_id" => $user_id
+        $insert->execute([
+            ":name" => $name,
+            ":lname" => $lname,
+            ":company_name" => $company_name,
+            ":address" => $address,
+            ":city" => $city,
+            ":country" => $country,
+            ":zip_code" => $zip_code,
+            ":email" => $email,
+            ":phone_number" => $phone_number,
+            ":order_notes" => $order_notes,
+            ":price" => $price,
+            ":user_id" => $user_id
 
-   ]);
+        ]);
 
-   echo "<script> window.location.href='". APPURL."/products/charge.php'; </script>";
-
+        echo "<script> window.location.href='" . APPURL . "/products/charge.php'; </script>";
     }
 }
- 
+
 
 
 ?>
@@ -138,34 +136,34 @@ VALUES(:name, :lname, :company_name, :address, :city, :country, :zip_code, :emai
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($allProducts as $product) : ?>
-                                    <tr>
-                                        <td>
-                                           <?php echo $product->pro_title; ?> x <?php echo $product->pro_qty; ?>
-                                        </td>
-                                        <td class="text-right">
-                                         R<?php echo $product->pro_price; ?>
-                                        </td>
-                                    </tr>
+                                    <?php foreach ($allProducts as $product) : ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $product->pro_title; ?> x <?php echo $product->pro_qty; ?>
+                                            </td>
+                                            <td class="text-right">
+                                                R<?php echo $product->pro_price; ?>
+                                            </td>
+                                        </tr>
                                     <?php endforeach; ?>
                                 </tbody>
-                                    <tfooter>
+                                <tfooter>
                                     <tr>
                                         <td>
                                             <strong>Cart Subtotal</strong>
                                         </td>
                                         <td class="text-right">
-                                        <?php if(isset($_SESSION['price'])) : ?>
-                                            R <?php echo $_SESSION['price']; ?>
+                                            <?php if (isset($_SESSION['price'])) : ?>
+                                                R <?php echo $_SESSION['price']; ?>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td >
-                                        <strong>Shipping</strong>
+                                        <td>
+                                            <strong>Shipping</strong>
                                         </td>
                                         <td class="text-right">
-                                        R50
+                                            R50
                                         </td>
                                     </tr>
                                     <tr>
@@ -173,7 +171,7 @@ VALUES(:name, :lname, :company_name, :address, :city, :country, :zip_code, :emai
                                             <strong>ORDER TOTAL</strong>
                                         </td>
                                         <td class="text-right">
-                                        <strong>R <?php echo $_SESSION['price'] + 50 ; ?></strong>
+                                            <strong>R <?php echo $_SESSION['price'] + 50; ?></strong>
                                         </td>
                                     </tr>
                             </table>

@@ -8,12 +8,12 @@ $products->execute();
 
 $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     $inp_price = (int)$_POST['inp_price'];
 
     $_SESSION['price'] = $inp_price;
-    
-    echo "<script> window.location.href='" . APPURL."/checkout.php'; </script>";
+
+    echo "<script> window.location.href='" . APPURL . "/checkout.php'; </script>";
 }
 
 
@@ -96,9 +96,9 @@ if(isset($_POST['submit'])) {
                     <h6 class=" full_price mt-3"></h6>
                     <form method="POST" action="cart.php">
                         <input class="inp_price form-control" type="hidden" value="" name="inp_price">
-                     <?php if(count($allProducts) > 0) : ?>
-                        <button type="submit" name="submit" class="btn btn-lg btn-primary">Checkout <i class="fa fa-long-arrow-right"></i></button>
-                   <?php endif; ?>
+                        <?php if (count($allProducts) > 0) : ?>
+                            <button type="submit" name="submit" class="btn btn-lg btn-primary">Checkout <i class="fa fa-long-arrow-right"></i></button>
+                        <?php endif; ?>
                     </form>
                 </div>
             </div>
