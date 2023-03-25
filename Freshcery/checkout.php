@@ -5,6 +5,55 @@ $products = $conn->query("SELECT * FROM cart WHERE user_id='$_SESSION[user_id]'"
 $products->execute();
 
 $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
+if(isset($_SESSION['price'])) {
+    $_SESSION['total_price'] = $_SESSION['price'] + 50;
+}
+
+if (isset($_POST['submit'])) {
+
+    if (
+        empty($_POST['name']) or empty($_POST['lname']) or empty($_POST['company_name'])
+        or empty($_POST['address']) or empty($_POST['city']) or empty($_POST['country'])
+        or empty($_POST['zip_code']) or empty($_POST['email']) or empty($_POST['phone_number']) 
+        or empty($_POST['order_notes'])
+    ) {
+
+        echo "<script>alert('one or more inputs are empty');<script>";
+    } else {
+        $name = $_POST['name'];
+        $lname = $_POST['lname'];
+        $ompany_name = $_POST['company_name'];
+        $address = $_POST['address'];
+        $city = $_POST['city'];
+        $country = $_POST['country'];
+        $zip_code = $_POST['zip_code'];
+        $email = $_POST['email'];
+        $phone_number = $_POST['phone_number'];
+        $order_notes = $_POST['order_notes'];
+        $price = $_SESSION['total_price'];
+        $user_id = $_SESSION['user_id'];
+    }
+}
+ 
+$insert = $conn->prepare("INSERT INTO orders(name, lname, company_name, address, city, country, zip_code, email,
+phone_number, order_notes, total_price, user_id)
+VALUES(:fullname, :email, :username, :mypassword, :image)");
+
+   $insert->execute([
+       ":name" => $name,
+       ":lname" => $lname,
+       ":company_name" => $company_name,
+       ":address" => $address,
+       ":city" => $city,
+       ":country" => $country,
+       ":zip_code" => $zip_code,
+       ":email" => $email,
+       ":phone_number" => $phone_number,
+       ":order_notes" => $order_notes,
+       ":total_price" => $total_price,
+       ":user_id" => $user_id
+
+   ]);
 
 ?>
 
@@ -28,7 +77,7 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                 <div class="col-xs-12 col-sm-7">
                     <h5 class="mb-3">BILLING DETAILS</h5>
                     <!-- Bill Detail of the Page -->
-                    <form action="#" class="bill-detail">
+                    <form action="checkout.php" method="POST" class="bill-detail">
                         <fieldset>
                             <div class="form-group row">
                                 <div class="col">
@@ -66,6 +115,7 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                                 <textarea class="form-control" name="order_notes" placeholder="Order Notes"></textarea>
                             </div>
                         </fieldset>
+                        <button name="submit" type="submit" class="btn btn-primary float-right">PROCEED TO CHECKOUT <i class="fa fa-check"></i></button>
                     </form>
                     <!-- Bill Detail of the Page end -->
                 </div>
@@ -117,7 +167,7 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                                             <strong>ORDER TOTAL</strong>
                                         </td>
                                         <td class="text-right">
-                                        <strong>R <?php echo $_SESSION['price'] + 50; ?></strong>
+                                        <strong>R <?php echo $_SESSION['price'] + 50 ; ?></strong>
                                         </td>
                                     </tr>
                             </table>
