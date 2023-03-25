@@ -9,7 +9,7 @@ $products->execute();
 $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 
 if(isset($_POST['submit'])) {
-    $inp_price = $_POST['inp_price'];
+    $inp_price = (int)$_POST['inp_price'];
 
     $_SESSION['price'] = $inp_price;
     

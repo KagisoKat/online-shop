@@ -19,10 +19,11 @@ if (isset($_POST['submit'])) {
     ) {
 
         echo "<script>alert('one or more inputs are empty');<script>";
+
     } else {
         $name = $_POST['name'];
         $lname = $_POST['lname'];
-        $ompany_name = $_POST['company_name'];
+        $company_name = $_POST['company_name'];
         $address = $_POST['address'];
         $city = $_POST['city'];
         $country = $_POST['country'];
@@ -32,12 +33,10 @@ if (isset($_POST['submit'])) {
         $order_notes = $_POST['order_notes'];
         $price = $_SESSION['total_price'];
         $user_id = $_SESSION['user_id'];
-    }
-}
- 
-$insert = $conn->prepare("INSERT INTO orders(name, lname, company_name, address, city, country, zip_code, email,
-phone_number, order_notes, total_price, user_id)
-VALUES(:fullname, :email, :username, :mypassword, :image)");
+
+        $insert = $conn->prepare("INSERT INTO orders(name, lname, company_name, address, city, country, zip_code, email,
+    phone_number, order_notes, price, user_id)
+VALUES(:name, :lname, :company_name, :address, :city, :country, :zip_code, :email, :phone_number, :order_notes, :price, :user_id)");
 
    $insert->execute([
        ":name" => $name,
@@ -50,10 +49,17 @@ VALUES(:fullname, :email, :username, :mypassword, :image)");
        ":email" => $email,
        ":phone_number" => $phone_number,
        ":order_notes" => $order_notes,
-       ":total_price" => $total_price,
+       ":price" => $price,
        ":user_id" => $user_id
 
    ]);
+
+   echo "<script> window.location.href='". APPURL."/products/charge.php'; </script>";
+
+    }
+}
+ 
+
 
 ?>
 
@@ -115,7 +121,7 @@ VALUES(:fullname, :email, :username, :mypassword, :image)");
                                 <textarea class="form-control" name="order_notes" placeholder="Order Notes"></textarea>
                             </div>
                         </fieldset>
-                        <button name="submit" type="submit" class="btn btn-primary float-right">PROCEED TO CHECKOUT <i class="fa fa-check"></i></button>
+                        <button name="submit" type="submit" class="btn btn-primary float-left">PROCEED TO CHECKOUT <i class="fa fa-check"></i></button>
                     </form>
                     <!-- Bill Detail of the Page end -->
                 </div>
@@ -178,7 +184,7 @@ VALUES(:fullname, :email, :username, :mypassword, :image)");
                     <p class="text-right mt-3">
                         <input checked="" type="checkbox"> I’ve read &amp; accept the <a href="#">terms &amp; conditions</a>
                     </p>
-                    <a href="#" class="btn btn-primary float-right">PROCEED TO CHECKOUT <i class="fa fa-check"></i></a>
+                    <!-- <a href="#" class="btn btn-primary float-right">PROCEED TO CHECKOUT <i class="fa fa-check"></i></a> -->
                     <div class="clearfix">
                     </div>
                 </div>
