@@ -78,8 +78,8 @@ if (isset($_SESSION['user_id'])) {
                                     <div class="avatar-header"><img src="<?php echo APPURL; ?>/assets/img/logo/<?php echo $_SESSION['image']; ?>"></div> <?php echo $_SESSION['username']; ?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="<?php echo APPURL; ?>/users/transaction.php?=<?php echo $_SESSION['user_id']; ?>">Transactions History</a>
-                                    <a class="dropdown-item" href="<?php echo APPURL; ?>setting.php">Settings</a>
+                                    <a class="dropdown-item" href="<?php echo APPURL; ?>/users/transaction.php?id=<?php echo $_SESSION['user_id']; ?>">Transactions History</a>
+                                    <a class="dropdown-item" href="<?php echo APPURL; ?>/users/setting.php">Settings</a>
                                     <a class="dropdown-item" href="<?php echo APPURL; ?>/auth/logout.php">Log out</a>
                                 </div>
                             </li>

@@ -1,9 +1,23 @@
 <?php require "../includes/header.php"; ?>
 <?php require "../config/config.php"; ?>
+<?php 
+
+if(isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    $select = $conn->query("SELECT * FROM orders WHERE user_id='$id'");
+    $select->execute();
+
+    $data = $select->fetchAll(PDO::FETCH_OBJ);
+}
+
+
+?>
+
 
 <div id="page-content" class="page-content">
     <div class="banner">
-        <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('<?php echo APPURL; ?>assets/img/bg-header.jpg');">
+        <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('<?php echo APPURL; ?>/assets/img/bg-header.jpg');">
             <div class="container">
                 <h1 class="pt-5">
                     Your Transactions
@@ -24,30 +38,37 @@
                             <thead>
                                 <tr>
                                     <th width="5%"></th>
-                                    <th>Invoice</th>
+                                    <th>Name</th>
                                     <th>Date</th>
-                                    <th>Total</th>
+                                    <th>Total Price</th>
                                     <th>Status</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php if(count($data) > 0) : ?>
+                                <?php foreach($data as $order) : ?>
                                 <tr>
-                                    <td>1</td>
+                                    <td> <?php echo $order->id; ?></td>
                                     <td>
-                                        AL121N8H2XQB47
+                                       <?php echo $order->name; ?>
                                     </td>
                                     <td>
-                                        12-12-2017
+                                    <?php echo $order->created_at; ?>
                                     </td>
                                     <td>
-                                        Rp 200.000
+                                    <?php echo $order->price; ?>
                                     </td>
                                     <td>
-                                        Delivered
+                                    <?php echo $order->status; ?>
                                     </td>
-
                                 </tr>
+                                <?php endforeach; ?>
+                                <?php else : ?>
+                                    <div class="alert alert-success bg-success text-white text-center">
+                                        There are no orders in cart just yet
+                                    </div>
+                                    <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
