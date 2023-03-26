@@ -3,7 +3,7 @@
 session_start();
 define("APPURL", "http://localhost/online-shop/Freshcery");
 
-require dirname(dirname(__FILE__)). "/config/config.php";
+require dirname(dirname(__FILE__)) . "/config/config.php";
 if (isset($_SESSION['user_id'])) {
     $cart = $conn->query("SELECT COUNT(*) as num_products FROM cart WHERE user_id='$_SESSION[user_id]'");
     $cart->execute();
@@ -78,7 +78,7 @@ if (isset($_SESSION['user_id'])) {
                                     <div class="avatar-header"><img src="<?php echo APPURL; ?>/assets/img/logo/<?php echo $_SESSION['image']; ?>"></div> <?php echo $_SESSION['username']; ?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="<?php echo APPURL; ?>transaction.php">Transactions History</a>
+                                    <a class="dropdown-item" href="<?php echo APPURL; ?>/users/transaction.php?=<?php echo $_SESSION['user_id']; ?>">Transactions History</a>
                                     <a class="dropdown-item" href="<?php echo APPURL; ?>setting.php">Settings</a>
                                     <a class="dropdown-item" href="<?php echo APPURL; ?>/auth/logout.php">Log out</a>
                                 </div>
