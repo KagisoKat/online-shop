@@ -145,12 +145,14 @@ if (isset($_GET['id'])) {
                             </div>
                             <?php if (isset($_SESSION['username'])) : ?>
                                 <?php if ($validate->rowCount() > 0) : ?>
-                                    <button class=" btn-insert mt-3  btn btn-primary btn-lg " name="submit" type="submit" disabled>
+                                    
+                                    <button class=" btn-insert mt-3  btn btn-primary btn-lg float-left" name="submit" type="submit" disabled>
                                         <i class="fa fa-shopping-basket"></i> Added to Cart
                                     </button>
+                                   
                                 <?php else : ?>
-                                    <button class=" btn-insert mt-3  btn btn-primary btn-lg " name="submit" type="submit">
-                                        <i class="fa fa-shopping-basket"></i> Add to Cart
+                                    <button class=" btn-insert mt-3 btn btn-primary btn-lg float-left " name="submit" type="submit">
+                                        <i class="fa fa-shopping-basket "></i> Add to Cart
                                     </button>
                                 <?php endif; ?>
                             <?php else : ?>
@@ -198,7 +200,7 @@ if (isset($_GET['id'])) {
                                             <!-- <span class="discount">Rp. 300.000</span> -->
                                             <span class="reguler"><?php echo $products->price; ?></span>
                                         </div>
-                                        <a href="<?php echo APPURL; ?>/detail-product.php?id=<?php echo $products->id; ?>" class="btn btn-block btn-primary">
+                                        <a href="<?php echo APPURL; ?>/detail-product.php?id=<?php echo $products->id; ?>" class="btn btn-block btn-primary float-left">
                                             Add to Cart
                                         </a>
 
