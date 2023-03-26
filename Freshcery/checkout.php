@@ -53,7 +53,7 @@ VALUES(:name, :lname, :company_name, :address, :city, :country, :zip_code, :emai
 
         ]);
 
-        echo "<script> window.location.href='" . APPURL . "/products/charge.php'; </script>";
+        echo "<script> window.location.href='" . APPURL . "/charge.php'; </script>";
     }
 }
 

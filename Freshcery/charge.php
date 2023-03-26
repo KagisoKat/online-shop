@@ -29,9 +29,10 @@
           },
           onApprove: (data, actions) => {
             return actions.order.capture().then(function(orderData) {
-              console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-              const transaction = orderData.purchase_units[0].payments.captures[0];
-              alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+              // console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+              // const transaction = orderData.purchase_units[0].payments.captures[0];
+              // alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+              window.location.href = 'success.php';
             })
           }
         }).render('#paypal-button-container');
