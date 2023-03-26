@@ -1,5 +1,12 @@
 <?php require "./includes/header.php"; ?>
 
+<?php
+if (!isset($_SESSION['username'])) {
+  echo "<script> window.location.href='" . APPURL . "'; </script>";
+}
+
+?>
+
 
 
 <div class="banner">

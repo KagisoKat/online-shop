@@ -2,7 +2,7 @@
 <?php require "./config/config.php"; ?>
 <?php
 
-if (isset($_SESSION['username'])) {
+if (!isset($_SESSION['username'])) {
     echo "<script> window.location.href='" . APPURL . "'; </script>";
 }
 

@@ -2,6 +2,10 @@
 <?php require "./config/config.php"; ?>
 <?php
 
+
+if (!isset($_SESSION['username'])) {
+    echo "<script> window.location.href='" . APPURL . "'; </script>";
+}
 if (isset($_POST['submit'])) {
 
     $pro_id = $_POST['pro_id'];
@@ -145,11 +149,11 @@ if (isset($_GET['id'])) {
                             </div>
                             <?php if (isset($_SESSION['username'])) : ?>
                                 <?php if ($validate->rowCount() > 0) : ?>
-                                    
+
                                     <button class=" btn-insert mt-3  btn btn-primary btn-lg float-left" name="submit" type="submit" disabled>
                                         <i class="fa fa-shopping-basket"></i> Added to Cart
                                     </button>
-                                   
+
                                 <?php else : ?>
                                     <button class=" btn-insert mt-3 btn btn-primary btn-lg float-left " name="submit" type="submit">
                                         <i class="fa fa-shopping-basket "></i> Add to Cart
