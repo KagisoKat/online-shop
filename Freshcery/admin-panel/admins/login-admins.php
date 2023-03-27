@@ -3,9 +3,9 @@
 
 <?php
 
-if (isset($_SESSION['username'])) {
-    echo "<script> window.location.href='" . APPURL . "'; </script>";
-}
+// if (isset($_SESSION['username'])) {
+//     echo "<script> window.location.href='" . APPURL . "'; </script>";
+// }
 
 
 
@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 
         // query
 
-        $login = $conn->query("SELECT * FROM users WHERE email='$email'");
+        $login = $conn->query("SELECT * FROM admins WHERE email='$email'");
         $login->execute();
 
         $fetch = $login->fetch(PDO::FETCH_ASSOC);
@@ -34,12 +34,12 @@ if (isset($_POST['submit'])) {
             // validate password
             if (password_verify($password, $fetch['mypassword'])) {
 
-                $_SESSION['username'] = $fetch['username'];
+                $_SESSION['adminname'] = $fetch['adminname'];
                 $_SESSION['email'] = $fetch['email'];
-                $_SESSION['user_id'] = $fetch['id'];
-                $_SESSION['image'] = $fetch['image'];
-
-                echo "<script> window.location.href='" . APPURL . "'; </script>";
+                $_SESSION['admin_id'] = $fetch['id'];
+              
+          
+                echo "<script> window.location.href='" . ADMINURL . "'; </script>";
             } else {
                 echo "<script>alert('email or password is empty');</script>";
             }
@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
           <div class="card">
             <div class="card-body">
               <h5 class="card-title mt-5">Login</h5>
-              <form method="POST" class="p-auto" action="login.php">
+              <form method="POST" class="p-auto" action="login-admins.php">
                   <!-- Email input -->
                   <div class="form-outline mb-4">
                     <input type="email" name="email" id="form2Example1" class="form-control" placeholder="Email" />
