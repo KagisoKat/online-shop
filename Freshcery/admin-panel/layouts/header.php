@@ -31,6 +31,7 @@ define("ADMINURL", "http://localhost/online-shop/Freshcery/admin-panel");
         </button>
 
         <div class="collapse navbar-collapse" id="navbarText">
+          <?php if(isset( $_SESSION['adminname'])) : ?>
           <ul class="navbar-nav side-nav">
             <li class="nav-item">
               <a class="nav-link text-white" style="margin-left: 20px;" href="index.html">Home
@@ -52,6 +53,7 @@ define("ADMINURL", "http://localhost/online-shop/Freshcery/admin-panel");
             </li>
 
           </ul>
+          <?php endif; ?>
           <ul class="navbar-nav ml-md-auto d-md-flex">
             <?php if(!isset( $_SESSION['adminname'])) : ?>
             <li class="nav-item">
@@ -62,7 +64,7 @@ define("ADMINURL", "http://localhost/online-shop/Freshcery/admin-panel");
             <?php else: ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                username
+                <?php echo  $_SESSION['adminname']; ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Logout</a>

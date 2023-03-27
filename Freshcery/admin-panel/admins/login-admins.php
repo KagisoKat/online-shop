@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
                 $_SESSION['admin_id'] = $fetch['id'];
               
           
-                echo "<script> window.location.href='" . ADMINURL . "'; </script>";
+                echo "<script> window.location.href='" . ADMINURL . "';</script>";
             } else {
                 echo "<script>alert('email or password is empty');</script>";
             }
