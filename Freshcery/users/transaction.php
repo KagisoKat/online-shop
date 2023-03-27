@@ -2,8 +2,18 @@
 <?php require "../config/config.php"; ?>
 <?php 
 
+
+if (!isset($_SESSION['username'])) {
+    echo "<script> window.location.href='" . APPURL . "'; </script>";
+}
+
+
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
+    if ($id !== $_SESSION['user_id']) {
+        echo "<script> window.location.href='" . APPURL . "'; </script>";
+    }
+    
 
     $select = $conn->query("SELECT * FROM orders WHERE user_id='$id'");
     $select->execute();
