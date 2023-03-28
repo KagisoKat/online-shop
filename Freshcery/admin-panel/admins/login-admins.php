@@ -4,7 +4,7 @@
 <?php
 
 if (isset($_SESSION['adminname'])) {
-  echo "<script> window.location.href='".ADMINURL."'; </script>";
+  echo "<script> window.location.href='" . ADMINURL . "'; </script>";
 }
 
 

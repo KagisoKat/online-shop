@@ -34,22 +34,22 @@ define("ADMINURL", "http://localhost/online-shop/Freshcery/admin-panel");
           <?php if(isset( $_SESSION['adminname'])) : ?>
           <ul class="navbar-nav side-nav">
             <li class="nav-item">
-              <a class="nav-link text-white" style="margin-left: 20px;" href="index.html">Home
+              <a class="nav-link text-white" style="margin-left: 20px;" href="index.php">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href=" <?php echo ADMINURL; ?>/admins/admins.html" style="margin-left: 20px;">Admins</a>
+              <a class="nav-link" href=" <?php echo ADMINURL; ?>/admins/admins.php" style="margin-left: 20px;">Admins</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo ADMINURL; ?>/categories-admins/show-categories.html" style="margin-left: 20px;">Categories</a>
+              <a class="nav-link" href="<?php echo ADMINURL; ?>/categories-admins/show-categories.php" style="margin-left: 20px;">Categories</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo ADMINURL; ?>/products-admins/show-products.html" style="margin-left: 20px;">Products</a>
+              <a class="nav-link" href="<?php echo ADMINURL; ?>/products-admins/show-products.php" style="margin-left: 20px;">Products</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo ADMINURL; ?>/orders-admins/show-orders.html" style="margin-left: 20px;">Orders</a>
+              <a class="nav-link" href="<?php echo ADMINURL; ?>/orders-admins/show-orders.php" style="margin-left: 20px;">Orders</a>
             </li>
 
           </ul>
