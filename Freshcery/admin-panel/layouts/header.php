@@ -74,7 +74,7 @@ define("ADMINURL", "http://localhost/online-shop/Freshcery/admin-panel");
                 <?php echo  $_SESSION['adminname']; ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="<?php echo ADMINURL; ?>/logout.php">Logout</a>
 
             </li>
             <?php endif; ?>
