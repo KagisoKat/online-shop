@@ -6,11 +6,10 @@
 if (isset($_POST['submit'])) {
 
   if (
-    ($_POST['email']) or empty($_POST['username'])
-    or empty($_POST['adminname'])
+    (empty($_POST['email'])) or empty($_POST['password']) or empty($_POST['adminname'])
   ) {
 
-    echo "<script>alert('one or more inputs are empty');<script>";
+    echo "<script>alert('one or more inputs are empty');</script>";
   } else {
 
 
@@ -19,9 +18,13 @@ if (isset($_POST['submit'])) {
     $adminname = $_POST['adminname'];
     $password = $_POST['password'];
 
+    var_dump($email);
+    var_dump($adminname);
+    var_dump($password);
+
 
     $insert = $conn->prepare("INSERT INTO admins(email, adminname, mypassword)
-       VALUES(email, :adminname, :mypassword,)");
+       VALUES(:email, :adminname, :mypassword)");
 
     $insert->execute([
       ":email" => $email,
@@ -29,9 +32,9 @@ if (isset($_POST['submit'])) {
       ":mypassword" => password_hash($password, PASSWORD_DEFAULT),
     ]);
 
-    //  header("location: login.php");
+    //  header("Location: login.php");
 
-    echo "<script> window.location.href='" . ADMINURL . "/admins/admins.php'; </script>";
+    echo "<script> window.location.href='".ADMINURL."/admins/admins.php';</script>";
 
     //  $confirmpassword = $_POST[''];
   }
