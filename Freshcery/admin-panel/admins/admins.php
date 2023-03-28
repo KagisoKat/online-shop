@@ -21,29 +21,19 @@ $allAdmins = $admins->fetchAll(PDO::FETCH_OBJ);
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">username</th>
+              <th scope="col">adminname</th>
               <th scope="col">email</th>
             </tr>
           </thead>
           <tbody>
+            <?php foreach($allAdmins as $admin) : ?>
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
+              <th scope="row"><?php echo $admin->id; ?></th>
+              <td><?php echo $admin->adminname; ?></td>
+              <td><?php echo $admin->email; ?></td>
 
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-
-            </tr>
+            <?php endforeach;  ?>
           </tbody>
         </table>
       </div>
