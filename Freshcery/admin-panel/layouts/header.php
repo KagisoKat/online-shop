@@ -34,7 +34,7 @@ define("ADMINURL", "http://localhost/online-shop/Freshcery/admin-panel");
           <?php if(isset( $_SESSION['adminname'])) : ?>
           <ul class="navbar-nav side-nav">
             <li class="nav-item">
-              <a class="nav-link text-white" style="margin-left: 20px;" href="index.php">Home
+              <a class="nav-link text-white" style="margin-left: 20px;" href="<?php echo ADMINURL; ?>">Home
                 <span class="sr-only">()</span>
               </a>
             </li>
@@ -64,7 +64,7 @@ define("ADMINURL", "http://localhost/online-shop/Freshcery/admin-panel");
             </li>
             <?php else: ?>
             <li>
-              <a class="nav-link" href="<?php echo ADMINURL; ?>index.php">Home
+              <a class="nav-link" href="<?php echo ADMINURL; ?>">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
