@@ -1,11 +1,11 @@
-<?php require "layouts/header.php"; ?>
-<?php require "../config/config.php"; ?>
+<?php require "../layouts/header.php"; ?>
+<?php require "../../config/config.php"; ?>
 <?php
 
-$admins = $conn->query("SELECT * FROM admins");
-$admins->execute();
+$categories = $conn->query("SELECT * FROM categories");
+$categories->execute();
 
-$allAdmins = $admins->fetchAll(PDO::FETCH_OBJ);
+$allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
 
 
 
@@ -28,24 +28,15 @@ $allAdmins = $admins->fetchAll(PDO::FETCH_OBJ);
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Fruits</td>
-              <td><a href="#" class="btn btn-warning text-white text-center ">Update </a></td>
-              <td><a href="#" class="btn btn-danger  text-center ">Delete </a></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Meat</td>
-              <td><a href="#" class="btn btn-warning text-white text-center">Update </a></td>
-              <td><a href="#" class="btn btn-danger  text-center ">Delete </a></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Frozen Food</td>
-              <td><a href="#" class="btn btn-warning text-white text-center ">Update </a></td>
-              <td><a href="#" class="btn btn-danger text-center">Delete </a></td>
-            </tr>
+            <?php foreach ($allCategories as $category) : ?>
+              <tr>
+                <th scope="row"><?php echo $category->id; ?></th>
+                <td><?php echo $category->name; ?></td>
+                <td><a href="update-category.php?id=<?php echo $category->id; ?>" class="btn btn-warning text-white text-center ">Update </a></td>
+                <td><a href="delete-category.php?id=<?php echo $category->id; ?>" class="btn btn-danger  text-center ">Delete </a></td>
+              </tr>
+
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>
@@ -55,4 +46,4 @@ $allAdmins = $admins->fetchAll(PDO::FETCH_OBJ);
 
 
 
-<?php require "layouts/footer.php"; ?>
+<?php require "../layouts/footer.php"; ?>
