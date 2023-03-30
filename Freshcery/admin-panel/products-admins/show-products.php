@@ -22,14 +22,14 @@ $allproducts = $products->fetchAll(PDO::FETCH_OBJ);
     <div class="card">
       <div class="card-body">
         <h5 class="card-title mb-4 d-inline">Products</h5>
-        <a href="create-products.html" class="btn btn-primary mb-4 text-center float-right">Create Products</a>
+        <a href="<?php echo ADMINURL; ?>/products-admins/create-products.php" class="btn btn-primary mb-4 text-center float-right">Create Products</a>
 
         <table class="table">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">product</th>
-              <th scope="col">price in $$</th>
+              <th scope="col">price</th>
               <th scope="col">expiration date</th>
               <th scope="col">status</th>
               <th scope="col">delete</th>
@@ -42,11 +42,11 @@ $allproducts = $products->fetchAll(PDO::FETCH_OBJ);
                 <td><?php echo $product->title; ?></td>
                 <td><?php echo $product->price; ?></td>
                 <td><?php echo $product->exp_date; ?></td>
-                <?php if($product->status == 0) : ?>
-                <td><a href="<?php echo ADMINURL; ?>/products-admins/status.php?id=<?php echo $product->id; ?>&status=<?php echo $product->status; ?>" class="btn btn-success  text-center ">unavailable</a></td>
+                <?php if ($product->status == 0) : ?>
+                  <td><a href="<?php echo ADMINURL; ?>/products-admins/status.php?id=<?php echo $product->id; ?>&status=<?php echo $product->status; ?>" class="btn btn-danger  text-center ">unavailable</a></td>
                 <?php else : ?>
                   <td><a href="<?php echo ADMINURL; ?>/products-admins/status.php?id=<?php echo $product->id; ?>&status=<?php echo $product->status; ?>" class="btn btn-success  text-center ">available</a></td>
-                  <?php endif; ?>
+                <?php endif; ?>
                 <td><a href="<?php echo ADMINURL; ?>/products-admins/delete.php?id=<?php echo $product->id; ?>" class="btn btn-danger  text-center ">delete</a></td>
               </tr>
             <?php endforeach; ?>
