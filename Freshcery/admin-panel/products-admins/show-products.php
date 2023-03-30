@@ -47,7 +47,7 @@ $allproducts = $products->fetchAll(PDO::FETCH_OBJ);
                 <?php else : ?>
                   <td><a href="<?php echo ADMINURL; ?>/products-admins/status.php?id=<?php echo $product->id; ?>&status=<?php echo $product->status; ?>" class="btn btn-success  text-center ">available</a></td>
                 <?php endif; ?>
-                <td><a href="<?php echo ADMINURL; ?>/products-admins/delete.php?id=<?php echo $product->id; ?>" class="btn btn-danger  text-center ">delete</a></td>
+                <td><a href="<?php echo ADMINURL; ?>/products-admins/delete-products.php?id=<?php echo $product->id; ?>" class="btn btn-danger  text-center ">delete</a></td>
               </tr>
             <?php endforeach; ?>
           </tbody>

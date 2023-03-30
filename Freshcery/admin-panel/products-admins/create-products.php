@@ -1,7 +1,5 @@
 <?php require "../layouts/header.php"; ?>
 <?php require "../../config/config.php"; ?>
-<?php require "../layouts/header.php"; ?>
-<?php require "../../config/config.php"; ?>
 
 <?php
 
@@ -40,8 +38,8 @@ if (isset($_POST['submit'])) {
 
     $dir = "img_product/" . basename($image);
 
-    $insert = $conn->prepare("INSERT INTO products(title, price, category_id, description, exp_date, image)
-       VALUES(:title, :price, :category_id, :exp_date :description, :image)");
+    $insert = $conn->prepare("INSERT INTO products(title, price, description, category_id, exp_date, image)
+       VALUES(:title, :price, :category_id, :exp_date, :description, :image)");
 
     $insert->execute([
       ":title" => $title,
