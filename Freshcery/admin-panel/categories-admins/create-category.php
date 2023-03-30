@@ -11,7 +11,7 @@ if (!isset($_SESSION['adminname'])) {
 if (isset($_POST['submit'])) {
 
   if (
-    (empty($_POST['name'])) or empty($_POST['icon']) or empty($_POST['adminname'])
+    (empty($_POST['name'])) or empty($_POST['icon']) or empty($_POST['description'])
   ) {
 
     echo "<script>alert('one or more inputs are empty');</script>";
@@ -19,29 +19,30 @@ if (isset($_POST['submit'])) {
 
 
 
-    $email = $_POST['email'];
-    $adminname = $_POST['adminname'];
-    $password = $_POST['password'];
+    $name = $_POST['name'];
+    $icon = $_POST['icon'];
+    $description = $_POST['description'];
+    $image = $_FILES['image']['name'];
 
-    var_dump($email);
-    var_dump($adminname);
-    var_dump($password);
+    // var_dump($email);
+    // var_dump($adminname);
+    // var_dump($password);
 
+    $dir = "img_category/" . basename($image);
 
-    $insert = $conn->prepare("INSERT INTO admins(email, adminname, mypassword)
-       VALUES(:email, :adminname, :mypassword)");
+    $insert = $conn->prepare("INSERT INTO categories(name, icon, description,image)
+       VALUES(:name, :icon, :description, :image)");
 
     $insert->execute([
-      ":email" => $email,
-      ":adminname" => $adminname,
-      ":mypassword" => password_hash($password, PASSWORD_DEFAULT),
+      ":name" => $name,
+      ":icon" => $icon,
+      ":description" => $description,
+      ":image" => $image
     ]);
 
-    //  header("Location: login.php");
-
-    echo "<script> window.location.href='" . ADMINURL . "/admins/admins.php';</script>";
-
-    //  $confirmpassword = $_POST[''];
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $dir)) {
+      echo "<script> window.location.href='" . ADMINURL . "/categories-admins/show-categories.php';</script>";
+    }
   }
 }
 
@@ -56,7 +57,7 @@ if (isset($_POST['submit'])) {
     <div class="card">
       <div class="card-body">
         <h5 class="card-title mb-5 d-inline">Create Categories</h5>
-        <form method="POST" action="" enctype="multipart/form-data">
+        <form method="POST" action="create-category.php" enctype="multipart/form-data">
           <!-- Email input -->
           <div class="form-outline mb-4 mt-4">
             <input type="text" name="name" id="form2Example1" class="form-control" placeholder="name" />
@@ -76,7 +77,7 @@ if (isset($_POST['submit'])) {
 
 
           <!-- Submit button -->
-          <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">create</button>
+          <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">Create</button>
 
 
         </form>
