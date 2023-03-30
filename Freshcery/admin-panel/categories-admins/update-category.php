@@ -39,24 +39,20 @@ if(isset($_GET['id'])) {
   
      
   
-      $insert = $conn->prepare("UPDATE categories SET :name, icon = :icon, description = :description  WHERE id='$id'");
+      $insert = $conn->prepare("UPDATE categories SET name = :name, icon = :icon, description = :description  WHERE id='$id'");
   
       $insert->execute([
         ":name" => $name,
         ":icon" => $icon,
         ":description" => $description,
-        
       ]);
+
+      echo "<script> window.location.href='" . ADMINURL . "/categories-admins/show-categories.php'; </script>";
   
   
     }
   }
 }
-
-
-
-
-
 
 
 ?>
@@ -66,7 +62,7 @@ if(isset($_GET['id'])) {
     <div class="card">
       <div class="card-body">
         <h5 class="card-title mb-5 d-inline">Update Category</h5>
-        <form method="POST" action="update-category.php" enctype="multipart/form-data">
+        <form method="POST" action="update-category.php?id=<?php echo $id; ?>">
           <!-- Email input -->
           <div class="form-outline mb-4 mt-4">
             <input type="text" name="name" id="form2Example1" value="<?php echo $category->name; ?>" class="form-control" placeholder="name" />
