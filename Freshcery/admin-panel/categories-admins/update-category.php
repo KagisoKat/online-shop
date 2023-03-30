@@ -9,49 +9,51 @@ if (!isset($_SESSION['adminname'])) {
 
 if(isset($_GET['id'])) {
 
+
   $id = $_GET['id'];
 
-  $select = $conn->query("SELECT * FROM categories WHERE id='$id");
+  $select = $conn->query("SELECT * FROM categories WHERE id='$id'");
   $select->execute();
+
+  $category = $select->fetch(PDO::FETCH_OBJ);
+
+  if (isset($_POST['submit'])) {
+
+    if (
+      (empty($_POST['name'])) or empty($_POST['icon']) or empty($_POST['description'])
+    ) {
+  
+      echo "<script>alert('one or more inputs are empty');</script>";
+    } else {
+  
+  
+  
+      $name = $_POST['name'];
+      $icon = $_POST['icon'];
+      $description = $_POST['description'];
+     
+  
+      // var_dump($email);
+      // var_dump($adminname);
+      // var_dump($password);
+  
+     
+  
+      $insert = $conn->prepare("UPDATE categories SET :name, icon = :icon, description = :description  WHERE id='$id'");
+  
+      $insert->execute([
+        ":name" => $name,
+        ":icon" => $icon,
+        ":description" => $description,
+        
+      ]);
+  
+  
+    }
+  }
 }
 
-// if (isset($_POST['submit'])) {
 
-//   if (
-//     (empty($_POST['name'])) or empty($_POST['icon']) or empty($_POST['description'])
-//   ) {
-
-//     echo "<script>alert('one or more inputs are empty');</script>";
-//   } else {
-
-
-
-//     $name = $_POST['name'];
-//     $icon = $_POST['icon'];
-//     $description = $_POST['description'];
-//     $image = $_FILES['image']['name'];
-
-//     // var_dump($email);
-//     // var_dump($adminname);
-//     // var_dump($password);
-
-//     $dir = "img_category/" . basename($image);
-
-//     $insert = $conn->prepare("INSERT INTO categories(name, icon, description,image)
-//        VALUES(:name, :icon, :description, :image)");
-
-//     $insert->execute([
-//       ":name" => $name,
-//       ":icon" => $icon,
-//       ":description" => $description,
-//       ":image" => $image
-//     ]);
-
-//     if (move_uploaded_file($_FILES['image']['tmp_name'], $dir)) {
-//       echo "<script> window.location.href='" . ADMINURL . "/categories-admins/show-categories.php';</script>";
-//     }
-//   }
-// }
 
 
 
@@ -67,22 +69,15 @@ if(isset($_GET['id'])) {
         <form method="POST" action="update-category.php" enctype="multipart/form-data">
           <!-- Email input -->
           <div class="form-outline mb-4 mt-4">
-            <input type="text" name="name" id="form2Example1" class="form-control" placeholder="name" />
+            <input type="text" name="name" id="form2Example1" value="<?php echo $category->name; ?>" class="form-control" placeholder="name" />
           </div>
           <div class="form-outline mb-4 mt-4">
-            <input type="text" name="icon" id="form2Example1" class="form-control" placeholder="icon" />
+            <input type="text" name="icon" id="form2Example1"<?php echo $category->icon; ?> class="form-control" placeholder="icon" />
           </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Description</label>
-            <textarea name="description" placeholder="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="description" placeholder="description" class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo $category->description; ?></textarea>
           </div>
-          <div class="form-outline mb-4 mt-4">
-            <label>Image</label>
-
-            <input type="file" name="image" id="form2Example1" class="form-control" placeholder="image" />
-          </div>
-
-
           <!-- Submit button -->
           <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">Update</button>
 
