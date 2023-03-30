@@ -10,12 +10,17 @@ if (!isset($_SESSION['adminname'])) {
 }
 
 
+// fetching categories
+$categories = $conn->query("SELECT * FROM categories");
+$categories->execute();
+
+$allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
+
 if (isset($_POST['submit'])) {
 
   if (
     (empty($_POST['title'])) or empty($_POST['price']) or empty($_POST['category_id']) or empty($_POST['description']) or empty($_POST['exp_date'])
-  )
-   {
+  ) {
 
     echo "<script>alert('one or more inputs are empty');</script>";
   } else {
@@ -48,7 +53,7 @@ if (isset($_POST['submit'])) {
     ]);
 
     if (move_uploaded_file($_FILES['image']['tmp_name'], $dir)) {
-      echo "<script> window.location.href='" . ADMINURL . "/categories-admins/show-categories.php';</script>";
+      echo "<script> window.location.href='" . ADMINURL . "/products-admins/show-products.php';</script>";
     }
   }
 }
@@ -64,7 +69,7 @@ if (isset($_POST['submit'])) {
     <div class="card">
       <div class="card-body">
         <h5 class="card-title mb-5 d-inline">Create Products</h5>
-        <form method="POST" action="" enctype="multipart/form-data">
+        <form method="POST" action="create-products.php" enctype="multipart/form-data">
           <!-- Email input -->
           <div class="form-outline mb-4 mt-4">
             <label>Title</label>
@@ -87,14 +92,15 @@ if (isset($_POST['submit'])) {
             <label for="exampleFormControlSelect1">Select Category</label>
             <select name="category_id" class="form-control" id="exampleFormControlSelect1">
               <option>--select category--</option>
-              <option>Fruits</option>
-              <option>Meat</option>
+              <?php foreach ($allCategories as $category) : ?>
+                <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+              <?php endforeach; ?>
             </select>
           </div>
 
           <div class="form-group">
             <label for="exampleFormControlSelect1">Select Expiration Date</label>
-            <select name="category_id" class="form-control" id="exampleFormControlSelect1">
+            <select name="exp_date" class="form-control" id="exampleFormControlSelect1">
               <option>--select expiration date--</option>
               <option>2024</option>
               <option>2025</option>
