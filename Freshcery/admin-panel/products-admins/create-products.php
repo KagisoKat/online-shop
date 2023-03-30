@@ -13,7 +13,7 @@ if (!isset($_SESSION['adminname'])) {
 if (isset($_POST['submit'])) {
 
   if (
-    (empty($_POST['title'])) or empty($_POST['price']) or empty($_POST['category']) or empty($_POST['description']) or empty($_POST['exp_date'])
+    (empty($_POST['title'])) or empty($_POST['price']) or empty($_POST['category_id']) or empty($_POST['description']) or empty($_POST['exp_date'])
   )
    {
 
@@ -22,9 +22,9 @@ if (isset($_POST['submit'])) {
 
 
 
-    $name = $_POST['title'];
-    $icon = $_POST['price'];
-    $category = $_POST['category'];
+    $title = $_POST['title'];
+    $price = $_POST['price'];
+    $category_id = $_POST['category_id'];
     $description = $_POST['description'];
     $exp_date = $_POST['exp_date'];
     $image = $_FILES['image']['name'];
@@ -33,15 +33,17 @@ if (isset($_POST['submit'])) {
     // var_dump($adminname);
     // var_dump($password);
 
-    $dir = "img_category/" . basename($image);
+    $dir = "img_product/" . basename($image);
 
-    $insert = $conn->prepare("INSERT INTO categories(name, icon, description,image)
-       VALUES(:name, :icon, :description, :image)");
+    $insert = $conn->prepare("INSERT INTO products(title, price, category_id, description, exp_date, image)
+       VALUES(:title, :price, :category_id, :exp_date :description, :image)");
 
     $insert->execute([
-      ":name" => $name,
-      ":icon" => $icon,
+      ":title" => $title,
+      ":price" => $price,
       ":description" => $description,
+      ":category_id" => $category_id,
+      ":exp_date" => $exp_date,
       ":image" => $image
     ]);
 
