@@ -1,6 +1,10 @@
 <?php require "../layouts/header.php"; ?>
 <?php require "../../config/config.php"; ?>
-<?php 
+<?php
+
+if (!isset($_SESSION['adminname'])) {
+  echo "<script> window.location.href='" . ADMINURL . "/admins/login-admins.php'; </script>";
+}
 
 $admins = $conn->query("SELECT * FROM admins");
 $admins->execute();
@@ -26,13 +30,13 @@ $allAdmins = $admins->fetchAll(PDO::FETCH_OBJ);
             </tr>
           </thead>
           <tbody>
-            <?php foreach($allAdmins as $admin) : ?>
-            <tr>
-              <th scope="row"><?php echo $admin->id; ?></th>
-              <td><?php echo $admin->adminname; ?></td>
-              <td><?php echo $admin->email; ?></td>
+            <?php foreach ($allAdmins as $admin) : ?>
+              <tr>
+                <th scope="row"><?php echo $admin->id; ?></th>
+                <td><?php echo $admin->adminname; ?></td>
+                <td><?php echo $admin->email; ?></td>
 
-            </tr>
+              </tr>
             <?php endforeach;  ?>
           </tbody>
         </table>
