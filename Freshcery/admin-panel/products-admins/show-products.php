@@ -42,7 +42,11 @@ $allproducts = $products->fetchAll(PDO::FETCH_OBJ);
                 <td><?php echo $product->title; ?></td>
                 <td><?php echo $product->price; ?></td>
                 <td><?php echo $product->exp_date; ?></td>
-                <td><a href="<?php echo ADMINURL; ?>/products-admins/status.php?id=<?php echo $product->id; ?>&status=<?php echo $product->status; ?>" class="btn btn-success  text-center ">verfied</a></td>
+                <?php if($product->status == 0) : ?>
+                <td><a href="<?php echo ADMINURL; ?>/products-admins/status.php?id=<?php echo $product->id; ?>&status=<?php echo $product->status; ?>" class="btn btn-success  text-center ">unavailable</a></td>
+                <?php else : ?>
+                  <td><a href="<?php echo ADMINURL; ?>/products-admins/status.php?id=<?php echo $product->id; ?>&status=<?php echo $product->status; ?>" class="btn btn-success  text-center ">available</a></td>
+                  <?php endif; ?>
                 <td><a href="<?php echo ADMINURL; ?>/products-admins/delete.php?id=<?php echo $product->id; ?>" class="btn btn-danger  text-center ">delete</a></td>
               </tr>
             <?php endforeach; ?>
