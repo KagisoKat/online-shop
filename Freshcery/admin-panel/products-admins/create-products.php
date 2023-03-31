@@ -39,11 +39,11 @@ if (isset($_POST['submit'])) {
     $dir = "img_product/" . basename($image);
 
     $insert = $conn->prepare("INSERT INTO products(title, price, description, category_id, exp_date, image)
-       VALUES(:title, :price, :category_id, :exp_date, :description, :image)");
+       VALUES(:title, :price, :description, :category_id, :exp_date, :image)");
 
     $insert->execute([
       ":title" => $title,
-      ":price" => $price,
+      ":price" => (int)$price,
       ":description" => $description,
       ":category_id" => $category_id,
       ":exp_date" => $exp_date,
@@ -78,7 +78,7 @@ if (isset($_POST['submit'])) {
           <div class="form-outline mb-4 mt-4">
             <label>Price</label>
 
-            <input type="text" name="price" id="form2Example1" class="form-control" placeholder="price" />
+            <input type="number" name="price" id="form2Example1" class="form-control" placeholder="price" />
           </div>
 
           <div class="form-group">
@@ -97,7 +97,7 @@ if (isset($_POST['submit'])) {
           </div>
 
           <div class="form-group">
-            <label for="exampleFormControlSelect1">Select Expiration Date</label>
+            <label for="exampleFormControlSelect1">Select Expiry Date</label>
             <select name="exp_date" class="form-control" id="exampleFormControlSelect1">
               <option>--select expiration date--</option>
               <option>2024</option>

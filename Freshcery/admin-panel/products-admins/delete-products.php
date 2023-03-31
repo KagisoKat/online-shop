@@ -11,6 +11,7 @@ if (!isset($_SESSION['adminname'])) {
 if (isset($_GET['id'])) {
 
     $id = $_GET['id'];
+    $select = $conn->query("SELECT * FROM products WHERE id='$id'");
 
     $delete = $conn->query("DELETE  FROM products WHERE id='$id'");
     $delete->execute();
