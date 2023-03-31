@@ -15,9 +15,6 @@ if (isset($_GET['id'])) {
     $select = $conn->query("SELECT * FROM categories WHERE id='$id'");
     $select->execute();
 
-    $delete = $conn->query("DELETE  FROM categories WHERE id='$id'");
-    $delete->execute();
-
     $data = $select->fetch(PDO::FETCH_OBJ);
 
     unlink("img_category/" . $data->image);
