@@ -20,7 +20,7 @@ $allOrders = $orders->fetchAll(PDO::FETCH_OBJ);
     <div class="card">
       <div class="card-body">
         <h5 class="card-title mb-4 d-inline">Orders</h5>
-        <table class="table">
+        <table class="table mt-3">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -29,9 +29,10 @@ $allOrders = $orders->fetchAll(PDO::FETCH_OBJ);
               <th scope="col">email</th>
               <th scope="col">country</th>
               <th scope="col">status</th>
-              <th scope="col">price in USD</th>
+              <th scope="col">price</th>
               <th scope="col">date</th>
               <th scope="col">update</th>
+              <th scope="col">delete</th>
             </tr>
           </thead>
           <tbody>

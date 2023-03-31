@@ -4,54 +4,41 @@
 <?php
 
 if (!isset($_SESSION['adminname'])) {
-  echo "<script> window.location.href='" . ADMINURL . "/admins/login-admins.php'; </script>";
+    echo "<script> window.location.href='" . ADMINURL . "/admins/login-admins.php'; </script>";
 }
 
-if(isset($_GET['id'])) {
+if (isset($_GET['id'])) {
 
 
-  $id = $_GET['id'];
+    $id = $_GET['id'];
 
-  $select = $conn->query("SELECT * FROM orders WHERE id='$id'");
-  $select->execute();
+    // $select = $conn->query("SELECT * FROM orders WHERE id='$id'");
+    // $select->execute();
 
-  $order = $select->fetch(PDO::FETCH_OBJ);
+    // $order = $select->fetch(PDO::FETCH_OBJ);
 
-//   if (isset($_POST['submit'])) {
+      if (isset($_POST['submit'])) {
 
-//     if (
-//       (empty($_POST['name'])) or empty($_POST['icon']) or empty($_POST['description'])
-//     ) {
-  
-//       echo "<script>alert('one or more inputs are empty');</script>";
-//     } else {
-  
-  
-  
-//       $name = $_POST['name'];
-//       $icon = $_POST['icon'];
-//       $description = $_POST['description'];
-     
-  
-//       // var_dump($email);
-//       // var_dump($adminname);
-//       // var_dump($password);
-  
-     
-  
-//       $insert = $conn->prepare("UPDATE categories SET name = :name, icon = :icon, description = :description  WHERE id='$id'");
-  
-//       $insert->execute([
-//         ":name" => $name,
-//         ":icon" => $icon,
-//         ":description" => $description,
-//       ]);
+        if (
+          (empty($_POST['status'])) 
+        ) {
 
-//       echo "<script> window.location.href='" . ADMINURL . "/categories-admins/show-categories.php'; </script>";
-  
-  
-//     }
-//   }
+          echo "<script>alert('one or more inputs are empty');</script>";
+        } else {
+
+          $status = $_POST['status'];
+         
+          $update = $conn->prepare("UPDATE orders SET status = :status WHERE id='$id'");
+
+          $update->execute([
+            ":status" => $status
+          ]);
+
+          echo "<script> window.location.href='" . ADMINURL . "/orders-admins/show-orders.php'; </script>";
+
+
+        }
+      }
 }
 
 
@@ -59,31 +46,27 @@ if(isset($_GET['id'])) {
 
 
 <div class="row">
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title mb-5 d-inline">Update Order</h5>
-        <form method="POST" action="update-category.php?id=<?php echo $id; ?>">
-          <!-- Email input -->
-          <div class="form-outline mb-4 mt-4">
-            <input type="text" name="name" id="form2Example1" value="<?php echo $category->name; ?>" class="form-control" placeholder="name" />
-          </div>
-          <div class="form-outline mb-4 mt-4">
-            <input type="text" name="icon" id="form2Example1"<?php echo $category->icon; ?> class="form-control" placeholder="icon" />
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">Description</label>
-            <textarea name="description" placeholder="description" class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo $category->description; ?></textarea>
-          </div>
-          <!-- Submit button -->
-          <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">Update</button>
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title mb-5 d-inline">Update Order status</h5>
+                <form method="POST" action="update-orders.php?id=<?php echo $id; ?>">
+                    <!-- Email input -->
 
-
-        </form>
-
-      </div>
+                    <div class="form-group  mt-3">
+                        <!-- <label for="exampleFormControlSelect1">Select Order status </label> -->
+                        <select name="status" class="form-control" id="exampleFormControlSelect1">
+                            <option>--select order status--</option>
+                            <option value="in progress">in progress</option>
+                            <option value="delivered">delivered</option>
+                        </select>
+                    </div>
+                    <!-- Submit button -->
+                    <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">Update</button>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 </div>
 
