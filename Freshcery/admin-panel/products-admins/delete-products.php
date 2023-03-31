@@ -12,9 +12,14 @@ if (isset($_GET['id'])) {
 
     $id = $_GET['id'];
     $select = $conn->query("SELECT * FROM products WHERE id='$id'");
+    $select->execute();
 
     $delete = $conn->query("DELETE  FROM products WHERE id='$id'");
     $delete->execute();
+
+    $data = $select->fetch(PDO::FETCH_OBJ);
+
+    unlink("img_product/" . $data->image);
 
 
     echo "<script> window.location.href='" . ADMINURL . "/products-admins/show-products.php';</script>";
