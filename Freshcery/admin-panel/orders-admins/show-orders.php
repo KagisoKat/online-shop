@@ -6,10 +6,10 @@ if (!isset($_SESSION['adminname'])) {
   echo "<script> window.location.href='" . ADMINURL . "/admins/login-admins.php'; </script>";
 }
 
-$categories = $conn->query("SELECT * FROM categories");
-$categories->execute();
+$orders = $conn->query("SELECT * FROM orders");
+$orders->execute();
 
-$allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
+$allOrders = $orders->fetchAll(PDO::FETCH_OBJ);
 
 
 
@@ -35,45 +35,20 @@ $allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
                   </tr>
                 </thead>
                 <tbody>
+                  <?php foreach($allOrders as $order) : ?>
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Mark</td>
-                    <td>Otto@email.com</td>
-                    <td>USA</td>
-                    <td>sent to admins</td>
-                    <td>10</td>
-                    <td>12-12-2022</td>
+                    <th scope="row"><?php echo $order->id; ?></th>
+                    <td><?php echo $order->name; ?></td>
+                    <td><?php echo $order->lname; ?></td>
+                    <td><?php echo $order->email; ?></td>
+                    <td><?php echo $order->country; ?></td>
+                    <td><?php echo $order->status; ?></td>
+                    <td><?php echo $order->price; ?></td>
+                    <td><?php echo $order->created_at; ?></td>
                     <td>                
                         <a href="#" class="btn btn-warning text-white mb-4 text-center">update</a>
                     </td>
                    
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Jacob</td>
-                    <td>Otto@email.com</td>
-                    <td>USA</td>
-                    <td>sent to admins</td>
-                    <td>10</td>
-                    <td>12-12-2022</td>
-                    <td>                
-                        <a href="#" class="btn btn-warning text-white mb-4 text-center">update</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>Larry</td>
-                    <td>Otto@email.com</td>
-                    <td>USA</td>
-                    <td>sent to admins</td>
-                    <td>10</td>
-                    <td>12-12-2022</td>
-                    <td>                
-                        <a href="#" class="btn btn-warning text-white mb-4 text-center">update</a>
-                    </td>
                   </tr>
                 </tbody>
               </table> 
