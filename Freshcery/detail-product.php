@@ -4,9 +4,9 @@
 <?php
 
 
-if (!isset($_SESSION['username'])) {
-    echo "<script> window.location.href='" . APPURL . "'; </script>";
-}
+// if (!isset($_SESSION['username'])) {
+//     echo "<script> window.location.href='" . APPURL . "'; </script>";
+// }
 if (isset($_POST['submit'])) {
 
     $pro_id = $_POST['pro_id'];
@@ -68,7 +68,7 @@ if (isset($_GET['id'])) {
 
 <div id="page-content" class="page-content">
     <div class="banner">
-        <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('<?php echo APPURL; ?>/assets/img/<?php echo $product->image; ?>');">
+        <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('<?php echo IMGURLPRODUCT; ?>/<?php echo $product->image; ?>');">
             <div class="container">
                 <h1 class="pt-5">
                     <?php echo $product->title; ?>
@@ -84,8 +84,8 @@ if (isset($_GET['id'])) {
             <div class="row">
                 <div class="col-sm-6">
                     <div class="slider-zoom">
-                        <a href="<?php echo APPURL; ?>/assets/img/<?php echo $product->image; ?>" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: false, zoomWidth:'500', zoomHeight:'500', adjustY:0, adjustX:10" id="cloudZoom">
-                            <img alt="Detail Zoom thumbs image" src="<?php echo APPURL; ?>/assets/img/<?php echo $product->image; ?>" style="width: 100%;">
+                        <a href="<?php echo IMGURLPRODUCT; ?>/<?php echo $product->image; ?>" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: false, zoomWidth:'500', zoomHeight:'500', adjustY:0, adjustX:10" id="cloudZoom">
+                            <img alt="Detail Zoom thumbs image" src="<?php echo IMGURLPRODUCT; ?>/<?php echo $product->image; ?>" style="width: 100%;">
                         </a>
                     </div>
                 </div>
@@ -196,7 +196,7 @@ if (isset($_GET['id'])) {
                                                 20% OFF
                                             </span>
                                         </div>
-                                        <img src="assets/img/<?php echo $products->image; ?>" alt="Card image 2" class="card-img-top">
+                                        <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $products->image; ?>" alt="Card image 2" class="card-img-top">
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">

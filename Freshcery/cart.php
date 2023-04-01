@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 
 <div id="page-content" class="page-content">
     <div class="banner">
-        <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('<?php echo APPURL; ?>/assets/img/bg-header.jpg');">
+        <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('<?php echo APPURL; ?>//assets/img/bg-header.jpg');">
             <div class="container">
                 <h1 class="pt-5">
                     Your Cart
@@ -58,7 +58,7 @@ if (isset($_POST['submit'])) {
                                     <?php foreach ($allProducts as $product) : ?>
                                         <tr>
                                             <td>
-                                                <img src="<?php echo APPURL; ?>/assets/img/<?php echo $product->pro_image; ?>" width="60">
+                                                <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $product->pro_image; ?>" width="60">
                                             </td>
                                             <td>
                                                 <?php echo $product->pro_title; ?><br>

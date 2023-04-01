@@ -49,7 +49,7 @@ $allOrders = $orders->fetchAll(PDO::FETCH_OBJ);
                 <td>
                   <a href="<?php echo ADMINURL; ?>/orders-admins/update-orders.php?id=<?php echo $order->id; ?>" class="btn btn-warning text-white mb-4 text-center">update</a>
                 </td>
-
+                <td><a href="delete-orders.php?id=<?php echo $order->id; ?>" class="btn btn-danger  text-center ">delete </a></td>
               </tr>
             <?php endforeach; ?>
           </tbody>

@@ -111,11 +111,11 @@ $allFruits = $fruits->fetchAll(PDO::FETCH_OBJ);
                                             20% OFF
                                         </span>
                                     </div>
-                                    <img src="assets/img/<?php echo $allmostProduct->image; ?>" alt="Card image 2" class="card-img-top">
+                                    <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $allmostProduct->image; ?>" alt="Card image 2" class="card-img-top">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title">
-                                        <a href="detail-product.php?id=<?php echo $allmostProduct->id?>"><?php echo $allmostProduct->title; ?></a>
+                                        <a href="detail-product.php?id=<?php echo $allmostProduct->id ?>"><?php echo $allmostProduct->title; ?></a>
                                     </h4>
                                     <div class="card-price">
                                         <!-- <span class="discount">Rp. 300.000</span> -->
@@ -143,7 +143,7 @@ $allFruits = $fruits->fetchAll(PDO::FETCH_OBJ);
                                     20% OFF
                                 </span>
                             </div>
-                            <img src="assets/img/fruits.jpg" alt="Card image 2" class="card-img-top">
+                            <img src="<?php echo IMGURLPRODUCT; ?>/fruits.jpg" alt="Card image 2" class="card-img-top">
                         </div>
                         <div class="card-body">
                             <h4 class="card-title">
@@ -190,7 +190,7 @@ $allFruits = $fruits->fetchAll(PDO::FETCH_OBJ);
                                         20% OFF
                                     </span>
                                 </div>
-                                <img src="assets/img/<?php echo $veggie->image; ?>" alt="Card image 2" class="card-img-top">
+                                <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $veggie->image; ?>" alt="Card image 2" class="card-img-top">
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title">
@@ -231,7 +231,7 @@ $allFruits = $fruits->fetchAll(PDO::FETCH_OBJ);
                                                     20% OFF
                                                 </span>
                                             </div>
-                                            <img src="assets/img/<?php echo $fish->image; ?>" alt="Card image 2" class="card-img-top">
+                                            <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $fish->image; ?>" alt="Card image 2" class="card-img-top">
                                         </div>
                                         <div class="card-body">
                                             <h4 class="card-title">
@@ -275,7 +275,7 @@ $allFruits = $fruits->fetchAll(PDO::FETCH_OBJ);
                                                                 20% OFF
                                                             </span>
                                                         </div>
-                                                        <img src="assets/img/<?php echo $meat->image; ?>" alt="Card image 2" class="card-img-top">
+                                                        <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $meat->image; ?>" alt="Card image 2" class="card-img-top">
                                                     </div>
                                                     <div class="card-body">
                                                         <h4 class="card-title">
@@ -317,7 +317,7 @@ $allFruits = $fruits->fetchAll(PDO::FETCH_OBJ);
                                                                             20% OFF
                                                                         </span>
                                                                     </div>
-                                                                    <img src="assets/img/<?php echo $fruit->image; ?>" alt="Card image 2" class="card-img-top">
+                                                                    <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $fruit->image; ?>" alt="Card image 2" class="card-img-top">
                                                                 </div>
                                                                 <div class="card-body">
                                                                     <h4 class="card-title">
