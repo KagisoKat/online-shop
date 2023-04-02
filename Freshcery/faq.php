@@ -22,13 +22,13 @@
                         <p><strong>1. What is Freshchery?</strong></p>
                         <p>Freshchery delivers groceries from the stores you love to your doorstep in as little as one hour! We empower you to shop at your trusted stores using our own trained and experienced Personal Shoppers, and then ensure a safe delivery to you.</p>
                         <p><strong>2. What stores are supported?</strong></p>
-                        <p>We support a selected number of stores in your area including Ranch Market, Farmers Market, Lotte Mart, Transmart Carrefour, Super Indo, Grand Lucky, Red&amp;White and LOKA Lifestyle Supermarket. We are constantly adding new stores from your area, empowering you to shop from those stores. The stores that serve you are based on your location, and the availability of stores in your proximity.</p>
+                        <p>We support a selected number of stores in your area including Pick n Pay,Food lovers Farmers Market and CheckersSupermarket. We are constantly adding new stores from your area, empowering you to shop from those stores. The stores that serve you are based on your location, and the availability of stores in your proximity.</p>
                         <p><strong>3. Do you serve my area?</strong></p>
-                        <p>Currently we serve the Greater Jakarta area, including Tangeran, BSD, Bekasi and Depok as well as Surabaya and Bandung central areas. Check if we deliver to your area by downloading the App or using our Website. You can type your address and see the list of stores available. We keep adding stores on a regular basis! If your favorite store is not listed you can suggest it to us via the &nbsp;“Request New Stores” button at the bottom of the&nbsp; supermarkets list.</p>
+                        <p>Currently we serve Johanesburg, Cape Town and Durban as well as Surabaya and Bandung central areas. Check if we deliver to your area by downloading the App or using our Website. You can type your address and see the list of stores available. We keep adding stores on a regular basis! If your favorite store is not listed you can suggest it to us via the &nbsp;“Request New Stores” button at the bottom of the&nbsp; supermarkets list.</p>
                         <p><strong>4. How fast do you deliver?</strong></p>
                         <p>We deliver to you in the next hour, or at any other one-hour time-slot today and in the next 6 days.</p>
                         <p><strong>5. How much does delivery cost?</strong></p>
-                        <p>It costs IDR20,000 for the&nbsp;delivery on all delivery slots. And FREE DELIVERY for order placed above IDR500,000 in May 2017 only</p>
+                        <p>It costs R50 for the&nbsp;delivery on all delivery slots. And FREE DELIVERY for order placed above R500</p>
                         <p><strong>6. What are the delivery hours?</strong></p>
                         <p>Our delivery hours are based on the opening hours of the stores we work with. Usually between 10am and 10pm. You can place your orders at any time of the day.</p>
                         <p><strong>7. Can I collect any kinds of club points from the supermarkets?</strong></p>
@@ -73,7 +73,7 @@
                         <p><strong>23. What if all Personal Shoppers are busy?</strong></p>
                         <p>Occasionally our Personal Shoppers get overwhelmed with orders. During these times, the next available delivery slot may be later in the day. Use the delivery checker in the app to see the next available delivery for your order.</p>
                         <p><strong>24. I have many more questions for you!</strong></p>
-                        <p>Contact us! We will be there at support.indonesia@Freshchery.com.</p>
+                        <p>Contact us! We will be there at kagisokatherine@gmail.com.</p>
 
 
                     </div>
@@ -81,87 +81,4 @@
             </div>
         </section>
     </div>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <h5>About</h5>
-                    <p>Nisi esse dolor irure dolor eiusmod ex deserunt proident cillum eu qui enim occaecat sunt aliqua anim eiusmod qui ut voluptate.</p>
-                </div>
-                <div class="col-md-3">
-                    <h5>Links</h5>
-                    <ul>
-                        <li>
-                            <a href="about.html">About</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">Contact Us</a>
-                        </li>
-                        <li>
-                            <a href="faq.html">FAQ</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">How it Works</a>
-                        </li>
-                        <li>
-                            <a href="terms.html">Terms</a>
-                        </li>
-                        <li>
-                            <a href="privacy.html">Privacy Policy</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                     <h5>Contact</h5>
-                     <ul>
-                         <li>
-                            <a href="tel:+620892738334"><i class="fa fa-phone"></i> 08272367238</a>
-                        </li>
-                        <li>
-                            <a href="mailto:hello@domain.com"><i class="fa fa-envelope"></i> hello@domain.com</a>
-                         </li>
-                     </ul>
-
-                     <h5>Follow Us</h5>
-                     <ul class="social">
-                         <li>
-                            <a href="javascript:void(0)" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                         </li>
-                         <li>
-                            <a href="javascript:void(0)" target="_blank"><i class="fab fa-instagram"></i></a>
-                         </li>
-                         <li>
-                            <a href="javascript:void(0)" target="_blank"><i class="fab fa-youtube"></i></a>
-                         </li>
-                     </ul>
-                </div>
-                <div class="col-md-3">
-                     <h5>Get Our App</h5>
-                     <ul class="mb-0">
-                         <li class="download-app">
-                             <a href="#"><img src="assets/img/playstore.png"></a>
-                         </li>
-                         <li style="height: 200px">
-                             <div class="mockup">
-                                 <img src="assets/img/mockup.png">
-                             </div>
-                         </li>
-                     </ul>
-                </div>
-            </div>
-        </div>
-        <p class="copyright">&copy; 2018 Freshcery | Groceries Organic Store. All rights reserved.</p>
-    </footer>
-
-    <script type="text/javascript" src="assets/js/jquery.js"></script>
-    <script type="text/javascript" src="assets/js/jquery-migrate.js"></script>
-    <script type="text/javascript" src="assets/packages/bootstrap/libraries/popper.js"></script>
-    <script type="text/javascript" src="assets/packages/bootstrap/bootstrap.js"></script>
-    <script type="text/javascript" src="assets/packages/o2system-ui/o2system-ui.js"></script>
-    <script type="text/javascript" src="assets/packages/owl-carousel/owl-carousel.js"></script>
-    <script type="text/javascript" src="assets/packages/cloudzoom/cloudzoom.js"></script>
-    <script type="text/javascript" src="assets/packages/thumbelina/thumbelina.js"></script>
-    <script type="text/javascript" src="assets/packages/bootstrap-touchspin/bootstrap-touchspin.js"></script>
-    <script type="text/javascript" src="assets/js/theme.js"></script>
-</body>
-</html>
+    <?php require "./includes/footer.php"; ?>

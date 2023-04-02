@@ -58,6 +58,9 @@ if (isset($_SESSION['user_id'])) {
                     <!-- Navbar Menu -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
+                            <a href="<?php echo APPURL; ?>/search.php" class="nav-link">Search</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?php echo APPURL; ?>/shop.php" class="nav-link">Shop</a>
                         </li>
                         <?php if (!isset($_SESSION['username'])) : ?>
