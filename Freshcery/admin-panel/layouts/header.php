@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-define("ADMINURL", "http://localhost/online-shop/Freshcery/admin-panel");
+define("ADMINURL", "/online-shop/Freshcery/admin-panel");
 
 
 ?>

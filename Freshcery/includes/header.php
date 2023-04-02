@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-define("APPURL", "http://localhost/online-shop/Freshcery");
-define("IMGURLCATEGORY", "http://localhost/online-shop/Freshcery/admin-panel/categories-admins/img_category" );
-define("IMGURLPRODUCT", "http://localhost/online-shop/Freshcery/admin-panel/products-admins/img_product" );
+define("APPURL", "/online-shop/Freshcery");
+define("IMGURLCATEGORY", "/online-shop/Freshcery/admin-panel/categories-admins/img_category" );
+define("IMGURLPRODUCT", "/online-shop/Freshcery/admin-panel/products-admins/img_product" );
 
 require dirname(dirname(__FILE__)) . "/config/config.php";
 if (isset($_SESSION['user_id'])) {

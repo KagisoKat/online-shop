@@ -5,5 +5,5 @@
   session_destroy();
 
 
-  echo "<script> window.location.href='http://localhost/online-shop/Freshcery'; </script>";
+  echo "<script> window.location.href='/online-shop/Freshcery'; </script>";
  
