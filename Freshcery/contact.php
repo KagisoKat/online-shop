@@ -70,15 +70,14 @@
                                 </h3>
 
                                 <p class="text-light">
-                                    Jl. Petani No. 159, Cibabat<br>
-                                    Cimahi Utara<br>
-                                    Kota Cimahi<br>
-                                    Jawa Barat 40513
+                                    12 Goldman street<br>
+                                    Munpen building<br>
+                                    Roodeport 1725<br>
                                 </p>
 
                                 <p class="text-light">
-                                    <i class="fas fa-phone"></i> 0898986362<br>
-                                    <i class="fas fa-envelope"></i> hello@freshcery.com
+                                    <i class="fas fa-phone"></i> 0733259674<br>
+                                    <i class="fas fa-envelope"></i> kagisokatherine@gmail.com
                                 </p>
                             </div>
                         </div>
