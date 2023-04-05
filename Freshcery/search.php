@@ -1,3 +1,4 @@
+<?php require "./includes/autoloader.php"; ?>
 <?php require "./includes/header.php"; ?>
 <?php require "./config/config.php"; ?>
 <?php
@@ -57,7 +58,14 @@ $allmostProducts = $mostProducts->fetchAll(PDO::FETCH_OBJ);
             <div class="col-md-12">
                 <h2 class="title">Most Wanted</h2>
                 <div class="product-carousel owl-carousel">
-                    <?php foreach ($allmostProducts as $allmostProduct) : ?>
+                    <?php
+                        foreach ($allmostProducts as $allmostProduct) :
+                            $thisProduct = new ShopClasses\Product;
+                            $thisProduct->setExpDate($allmostProduct->exp_date);
+                            $thisProduct->setId($allmostProduct->id);
+                            $thisProduct->setTitle($allmostProduct->title);
+                            $thisProduct->setPrice((int)$allmostProduct->price);
+                    ?>
                         <div class="item">
                             <div class="card card-product">
                                 <div class="card-ribbon">
@@ -68,23 +76,23 @@ $allmostProducts = $mostProducts->fetchAll(PDO::FETCH_OBJ);
                                 <div class="card-badge">
                                     <div class="card-badge-container left">
                                         <span class="badge badge-default">
-                                            Until <?php echo $allmostProduct->exp_date; ?>
+                                            Until <?php echo $thisProduct->getExpDate(); ?>
                                         </span>
                                         <span class="badge badge-primary">
                                             20% OFF
                                         </span>
                                     </div>
-                                    <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $allmostProduct->image; ?>" alt="Card image 2" class="card-img-top">
+                                    <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $thisProduct->getImage(); ?>" alt="Card image 2" class="card-img-top">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title">
-                                        <a href="detail-product.php?id=<?php echo $allmostProduct->id ?>"><?php echo $allmostProduct->title; ?></a>
+                                        <a href="detail-product.php?id=<?php echo $thisProduct->getId() ?>"><?php echo $thisProduct->getTitle(); ?></a>
                                     </h4>
                                     <div class="card-price">
                                         <!-- <span class="discount">Rp. 300.000</span> -->
-                                        <span class="reguler"><?php echo $allmostProduct->price; ?></span>
+                                        <span class="reguler"><?php echo $thisProduct->getPrice(); ?></span>
                                     </div>
-                                    <a href="<?php echo APPURL; ?>/detail-product.php?id=<?php echo $allmostProduct->id; ?>" class="btn btn-block btn-primary ">
+                                    <a href="<?php echo APPURL; ?>/detail-product.php?id=<?php echo $thisProduct->getId(); ?>" class="btn btn-block btn-primary ">
                                         Add to Cart
                                     </a>
                                 </div>

@@ -1,8 +1,14 @@
 <?php
+<<<<<<< HEAD
 require "./includes/header.php";
+=======
+    require "./includes/autoloader.php";
+    require "./includes/header.php";
+>>>>>>> 33fa928e64969ea0a2151fb6f958c4c7a5374c0c
 
 $statusHidden = "hidden";
 
+<<<<<<< HEAD
 if (isset($_POST['sendMessage'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -14,6 +20,20 @@ if (isset($_POST['sendMessage'])) {
     $mostProducts->execute([":name" => $name, ":email" => $email, ":text" => $text]);
     echo "<script>alert('Message sent!');</script>";
 }
+=======
+    if (isset($_POST['sendMessage'])) {
+        $thisMessage = new ShopClasses\Message;
+        $thisMessage->setName($_POST['name']);
+        $thisMessage->setEmail($_POST['email']);
+        $thisMessage->setText($_POST['text']);
+        $statusHidden = "";
+
+        $sendQuery = "INSERT INTO message(name, email, text) VALUES (:name, :email, :text)";
+        $mostProducts = $conn->prepare($sendQuery);
+        $mostProducts->execute([":name" => $thisMessage->getName(), ":email" => $thisMessage->getEmail(), ":text" => $thisMessage->getText()]);
+        echo "<script>alert('Message sent!');</script>";
+    }
+>>>>>>> 33fa928e64969ea0a2151fb6f958c4c7a5374c0c
 ?>
 
 
