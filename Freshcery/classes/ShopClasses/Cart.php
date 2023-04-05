@@ -84,7 +84,8 @@
         }
 
         public function getSubtotal() {
-            return $this->productPrice * $this->productQuantity;
+            $this->setProductSubtotal($this->getProductPrice() * $this->getProductQuantity());
+            return $this->getProductSubtotal();
         }
     }
 

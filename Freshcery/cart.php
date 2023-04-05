@@ -61,10 +61,12 @@ if (isset($_POST['submit'])) {
                                             $thisProduct = new ShopClasses\Cart;
                                             $thisProduct->setProductImage($product->pro_image);
                                             $thisProduct->setProductTitle($product->pro_title);
-                                            $thisProduct->setProductPrice($product->pro_price);
-                                            $thisProduct->setProductQuantity($product->pro_qty);
+                                            $thisProduct->setProductPrice((int)$product->pro_price);
+                                            $thisProduct->setProductPrice((int)$product->pro_price);
+                                            $thisProduct->setProductQuantity((int)$product->pro_qty);
                                             $thisProduct->setId($product->id);
                                     ?>
+
                                         <tr>
                                             <td>
                                                 <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $thisProduct->getProductImage(); ?>" width="60">
@@ -77,16 +79,16 @@ if (isset($_POST['submit'])) {
                                                 <?php echo $thisProduct->getProductPrice(); ?>
                                             </td>
                                             <td>
-                                                <input class=" pro_qty form-control" type="number" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $thisProduct->getProductQuantity; ?>" name="vertical-spin">
+                                                <input class=" pro_qty form-control" type="number" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $thisProduct->getProductQuantity(); ?>" name="vertical-spin">
                                             </td>
                                             <td>
-                                                <button value="<?php echo $thisProduct->getId; ?>" class=" btn-update btn btn-primary">UPDATE</button>
+                                                <button value="<?php echo $thisProduct->getId(); ?>" class=" btn-update btn btn-primary">UPDATE</button>
                                             </td>
                                             <td class="subtotal_price">
                                                 <?php echo $thisProduct->getSubtotal(); ?>
                                             </td>
                                             <td>
-                                                <button value="<?php echo $thisProduct->getId; ?>" class=" btn-delete btn btn-primary ">delete</i></button>
+                                                <button value="<?php echo $thisProduct->getId(); ?>" class=" btn-delete btn btn-primary ">delete</i></button>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -158,6 +160,7 @@ if (isset($_POST['submit'])) {
                     },
 
                     success: function() {
+                        //alert("done\nid:" + id + "\nqty:" + pro_qty + "\nst:" + subTotal);
                         alert("done");
                         reload();
                     }
