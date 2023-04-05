@@ -10,14 +10,14 @@ $mostProducts->execute();
 $resultsHidden = "hidden";
 
 if (isset($_POST["search"])) {
-    $resultsHidden="";
+    $resultsHidden = "";
 
     $searchTerm = "%" . $_POST["search"] . "%";
 
     $productQuery .= " AND title LIKE :title";
     $mostProducts = $conn->prepare($productQuery);
     $mostProducts->execute([":title" => $searchTerm]);
-    }
+}
 
 
 $allmostProducts = $mostProducts->fetchAll(PDO::FETCH_OBJ);
@@ -41,13 +41,13 @@ $allmostProducts = $mostProducts->fetchAll(PDO::FETCH_OBJ);
     </div>
 
 
-<form action="search.php" method="POST">
-    <div class="mt-3">
+    <form action="search.php" method="POST">
+        <div class="mt-3">
 
-    <input type="text" name="search" />
-</div>
-<button type="submit" class="mt-3 btn-primary">Search</button>
-</form>
+            <input type="text" name="search" />
+        </div>
+        <button type="submit" class="btn mt-3 btn-primary">Search</button>
+    </form>
 
 </div>
 
@@ -104,4 +104,4 @@ $allmostProducts = $mostProducts->fetchAll(PDO::FETCH_OBJ);
 
 
 
-                                                <?php require "./includes/footer.php"; ?>
+<?php require "./includes/footer.php"; ?>
