@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-3">
                 <h5>About</h5>
-                <p>Nisi esse dolor irure dolor eiusmod ex deserunt proident cillum eu qui enim occaecat sunt aliqua anim eiusmod qui ut voluptate.</p>
+                <p>Freshchery delivers groceries from the stores you love to your doorstep in as little as one hour! We empower you to shop at your trusted stores using our own trained and experienced Personal Shoppers, and then ensure a safe delivery to you.</p>
             </div>
             <div class="col-md-3">
                 <h5>Links</h5>
@@ -23,23 +23,23 @@
                 <h5>Contact</h5>
                 <ul>
                     <li>
-                        <a href="tel:+620892738334"><i class="fa fa-phone"></i> 08272367238</a>
+                        <a href="tel:0733259674"><i class="fa fa-phone"></i> 0733259674</a>
                     </li>
                     <li>
-                        <a href="mailto:hello@domain.com"><i class="fa fa-envelope"></i> hello@domain.com</a>
+                        <a href="mailto:kagisokatherine@gmail.com"><i class="fa fa-envelope"></i> kagisokatherine@gmail.com</a>
                     </li>
                 </ul>
 
                 <h5>Follow Us</h5>
                 <ul class="social">
                     <li>
-                        <a href="javascript:void(0)" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
                     </li>
                 </ul>
             </div>

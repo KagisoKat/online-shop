@@ -43,11 +43,11 @@ $allmostProducts = $mostProducts->fetchAll(PDO::FETCH_OBJ);
 
 
 <form action="search.php" method="POST">
-    <div>
+    <div class="mt-3">
 
     <input type="text" name="search" />
 </div>
-<button type="submit">Search</button>
+<button type="submit" class="mt-3 btn-primary">Search</button>
 </form>
 
 </div>
