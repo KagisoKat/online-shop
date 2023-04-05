@@ -1,5 +1,6 @@
 <?php
 
+require "./includes/autoloader.php";
 
 if(!isset($_SERVER['HTTP_REFERER'])){
     //redirect them to you desired location
@@ -153,13 +154,19 @@ VALUES(:name, :lname, :company_name, :address, :city, :country, :zip_code, :emai
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($allProducts as $product) : ?>
+                                    <?php
+                                        foreach ($allProducts as $product) :
+                                            $thisProduct = new ShopClasses\Cart;
+                                            $thisProduct->setProductTitle($product->pro_title);
+                                            $thisProduct->setProductQuantity($product->pro_qty);
+                                            $thisProduct->setProductPrice($product->pro_price);
+                                    ?>
                                         <tr>
                                             <td>
-                                                <?php echo $product->pro_title; ?> x <?php echo $product->pro_qty; ?>
+                                                <?php echo $thisProduct->getProductTitle(); ?> x <?php echo $thisProduct->getProductQuantity(); ?>
                                             </td>
                                             <td class="text-right">
-                                                R<?php echo $product->pro_price; ?>
+                                                R<?php echo $thisProduct->getProductPrice(); ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

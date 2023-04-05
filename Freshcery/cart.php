@@ -1,3 +1,4 @@
+<?php require "./includes/autoloader.php"; ?>
 <?php require "./includes/header.php"; ?>
 <?php require "./config/config.php"; ?>
 <?php
@@ -55,29 +56,37 @@ if (isset($_POST['submit'])) {
                             </thead>
                             <tbody>
                                 <?php if (count($allProducts) > 0) : ?>
-                                    <?php foreach ($allProducts as $product) : ?>
+                                    <?php
+                                        foreach ($allProducts as $product) :
+                                            $thisProduct = new ShopClasses\Cart;
+                                            $thisProduct->setProductImage($product->pro_image);
+                                            $thisProduct->setProductTitle($product->pro_title);
+                                            $thisProduct->setProductPrice($product->pro_price);
+                                            $thisProduct->setProductQuantity($product->pro_qty);
+                                            $thisProduct->setId($product->id);
+                                    ?>
                                         <tr>
                                             <td>
-                                                <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $product->pro_image; ?>" width="60">
+                                                <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $thisProduct->getProductImage(); ?>" width="60">
                                             </td>
                                             <td>
-                                                <?php echo $product->pro_title; ?><br>
+                                                <?php echo $thisProduct->getProductTitle(); ?><br>
                                                 <small>1000g</small>
                                             </td>
                                             <td class="pro_price">
-                                                <?php echo $product->pro_price; ?>
+                                                <?php echo $thisProduct->getProductPrice(); ?>
                                             </td>
                                             <td>
-                                                <input class=" pro_qty form-control" type="number" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $product->pro_qty; ?>" name="vertical-spin">
+                                                <input class=" pro_qty form-control" type="number" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $thisProduct->getProductQuantity; ?>" name="vertical-spin">
                                             </td>
                                             <td>
-                                                <button value="<?php echo $product->id; ?>" class=" btn-update btn btn-primary">UPDATE</button>
+                                                <button value="<?php echo $thisProduct->getId; ?>" class=" btn-update btn btn-primary">UPDATE</button>
                                             </td>
                                             <td class="subtotal_price">
-                                                <?php echo $product->pro_price * $product->pro_qty; ?>
+                                                <?php echo $thisProduct->getSubtotal(); ?>
                                             </td>
                                             <td>
-                                                <button value="<?php echo $product->id; ?>" class=" btn-delete btn btn-primary ">delete</i></button>
+                                                <button value="<?php echo $thisProduct->getId; ?>" class=" btn-delete btn btn-primary ">delete</i></button>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

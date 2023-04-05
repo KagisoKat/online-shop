@@ -1,17 +1,19 @@
 <?php
+    require "./includes/autoloader.php";
     require "./includes/header.php";
 
     $statusHidden = "hidden";
 
     if (isset($_POST['sendMessage'])) {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $text = $_POST['text'];
+        $thisMessage = new ShopClasses\Message;
+        $thisMessage->setName($_POST['name']);
+        $thisMessage->setEmail($_POST['email']);
+        $thisMessage->setText($_POST['text']);
         $statusHidden = "";
 
         $sendQuery = "INSERT INTO message(name, email, text) VALUES (:name, :email, :text)";
         $mostProducts = $conn->prepare($sendQuery);
-        $mostProducts->execute([":name" => $name, ":email" => $email, ":text" => $text]);
+        $mostProducts->execute([":name" => $thisMessage->getName(), ":email" => $thisMessage->getEmail(), ":text" => $thisMessage->getText()]);
         echo "<script>alert('Message sent!');</script>";
     }
 ?>

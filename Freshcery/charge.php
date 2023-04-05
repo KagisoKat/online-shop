@@ -1,5 +1,6 @@
 <?php
 
+require "./includes/autoloader.php";
 
 if (!isset($_SERVER['HTTP_REFERER'])) {
   //redirect them to you desired location

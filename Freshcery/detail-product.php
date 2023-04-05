@@ -1,4 +1,4 @@
-
+<?php require "./includes/autoloader.php"; ?>
 <?php require "./includes/header.php"; ?>
 <?php require "./config/config.php"; ?>
 <?php
@@ -179,7 +179,15 @@ if (isset($_GET['id'])) {
                 <div class="col-md-12">
                     <h2 class="title">Related Products</h2>
                     <div class="product-carousel owl-carousel">
-                        <?php foreach ($allRelatedProducts as $products) : ?>
+                        <?php
+                            foreach ($allRelatedProducts as $products) :
+                                $thisProduct = new ShopClasses\Product;
+                                $thisProduct->setExpDate($products->exp_date);
+                                $thisProduct->setImage($products->image);
+                                $thisProduct->setTitle($products->title);
+                                $thisProduct->setPrice((int)$products->price);
+                                $thisProduct->setId($products->id);
+                        ?>
                             <div class="item">
                                 <div class="card card-product">
                                     <div class="card-ribbon">
@@ -190,23 +198,23 @@ if (isset($_GET['id'])) {
                                     <div class="card-badge">
                                         <div class="card-badge-container left">
                                             <span class="badge badge-default">
-                                                Until <?php echo $products->exp_date; ?>
+                                                Until <?php echo $thisProduct->getExpDate(); ?>
                                             </span>
                                             <span class="badge badge-primary">
                                                 20% OFF
                                             </span>
                                         </div>
-                                        <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $products->image; ?>" alt="Card image 2" class="card-img-top">
+                                        <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $thisProduct->getImage(); ?>" alt="Card image 2" class="card-img-top">
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.php"><?php echo $products->title; ?></a>
+                                            <a href="detail-product.php"><?php echo $thisProduct->getTitle(); ?></a>
                                         </h4>
                                         <div class="card-price">
                                             <!-- <span class="discount">Rp. 300.000</span> -->
-                                            <span class="reguler"><?php echo $products->price; ?></span>
+                                            <span class="reguler"><?php echo $thisProduct->getPrice(); ?></span>
                                         </div>
-                                        <a href="<?php echo APPURL; ?>/detail-product.php?id=<?php echo $products->id; ?>" class="btn btn-block btn-primary float-left">
+                                        <a href="<?php echo APPURL; ?>/detail-product.php?id=<?php echo $thisProduct->getId(); ?>" class="btn btn-block btn-primary float-left">
                                             Add to Cart
                                         </a>
 
